@@ -1,0 +1,25 @@
+{
+  "name": "test-reporter",
+  "homepage": "https://github.com/TriloBitSystems/test-reporter",
+  "authors": [
+    "Matej Kobza <mates@ravers.sk>"
+  ],
+  "description": "Test reporter is a GUI for test engine in other bigger application for root family ESKN.",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "test-reporter",
+    "tests",
+    "workflow",
+    "tests"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/main/webapp/bower_components",
+    "test",
+    "tests"
+  ]
+}
