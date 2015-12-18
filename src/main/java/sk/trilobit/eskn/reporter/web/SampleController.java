@@ -1,21 +1,21 @@
 package sk.trilobit.eskn.reporter.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.accept.MediaTypeFileExtensionResolver;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sk.trilobit.eskn.reporter.service.HelloWorldService;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping("/")
 public class SampleController {
 
-	@Autowired
-	private HelloWorldService helloWorldService;
-
-	@RequestMapping("/")
-	@ResponseBody
-	public String helloWorld() {
-		return this.helloWorldService.getHelloMessage();
+	@RequestMapping(value = "/loadTests", method = RequestMethod.GET)
+	public List<String> helloWorld() {
+		return new ArrayList<String>();
 	}
 
 }
