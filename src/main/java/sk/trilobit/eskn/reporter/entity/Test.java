@@ -1,8 +1,10 @@
 package sk.trilobit.eskn.reporter.entity;
 
-import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by doloi72 on 18.12.2015.
  */
@@ -11,7 +13,7 @@ import javax.persistence.Entity;
 
 public class Test {
 
-
+    @Id
     @Column(name = "ID")
     private long id;
 

@@ -1,8 +1,9 @@
 package sk.trilobit.eskn.reporter.entity;
 
-import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Time;
 
 /**
@@ -10,9 +11,9 @@ import java.sql.Time;
  */
 @Entity
 @Table(name = "TESTY_RUNS")
-
 public class Run {
 
+    @Id
     @Column(name = "RUN_ID")
     private long run_id;
 
