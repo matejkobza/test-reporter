@@ -21,8 +21,6 @@ angular.module('app')
             subjects: service.loadTests()
         };
 
-        console.debug(service.loadTests());
-
         $scope.toggleAddSubject = function (subjects) {
 
 

@@ -11,8 +11,8 @@ angular.module('app')
                 templateUrl: 'html/tests.html',
                 controller: 'TestController as testController'
             })
-            .state('tests.new', {
-                parent: 'tests',
+            .state('new', {
+                //parent: 'tests',
                 url: '/new',
                 templateUrl: 'html/tests.new.html',
                 controller: 'NewTestController as newTestController'
