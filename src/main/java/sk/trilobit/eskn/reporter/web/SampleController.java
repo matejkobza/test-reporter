@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import sk.trilobit.eskn.reporter.entity.Test;
 import sk.trilobit.eskn.reporter.repository.TestRepository;
 
 import javax.inject.Inject;
@@ -18,11 +19,9 @@ public class SampleController {
 	private TestRepository testRepository;
 
 	@RequestMapping(value = "/load", method = RequestMethod.GET)
-	public @ResponseBody List<String> helloWorld() {
-
-		testRepository.findAll();
-
-		return new ArrayList<String>();
+	public @ResponseBody List<Test> helloWorld() {
+		return testRepository.findAll();
 	}
+
 
 }
