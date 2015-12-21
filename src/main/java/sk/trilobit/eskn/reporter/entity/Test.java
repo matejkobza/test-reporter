@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 public class Test {
 
 
-    @JoinColumn(name = "ID")
+    @Column(name = "ID")
     private long id;
 
     @Column(name = "AKT")

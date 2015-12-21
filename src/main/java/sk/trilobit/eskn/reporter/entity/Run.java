@@ -11,12 +11,12 @@ import java.sql.Time;
 @Entity
 @Table(name = "TESTY_RUNS")
 
-public class Runs {
+public class Run {
 
-    @JoinColumn(name = "RUN_ID")
+    @Column(name = "RUN_ID")
     private long run_id;
 
-    @JoinColumn(name = "TEST_ID")
+    @Column(name = "TEST_ID")
     private int test_id;
 
     @Column(name = "STATUS")
