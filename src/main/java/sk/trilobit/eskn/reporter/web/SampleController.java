@@ -19,9 +19,13 @@ public class SampleController {
 	private TestRepository testRepository;
 
 	@RequestMapping(value = "/load", method = RequestMethod.GET)
-	public @ResponseBody List<Test> helloWorld() {
+	public @ResponseBody List<Test> findTest() {
 		return testRepository.findAll();
 	}
 
+	@RequestMapping(value = "/load", method = RequestMethod.POST)
+	public @ResponseBody List<Test> saveTest() {
+		return testRepository.findAll();
+	}
 
 }
