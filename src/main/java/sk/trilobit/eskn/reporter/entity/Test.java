@@ -1,9 +1,6 @@
 package sk.trilobit.eskn.reporter.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by doloi72 on 18.12.2015.
@@ -15,6 +12,7 @@ public class Test {
 
     @Id
     @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "AKT")

@@ -1,9 +1,7 @@
 package sk.trilobit.eskn.reporter.web;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 import sk.trilobit.eskn.reporter.entity.Test;
 import sk.trilobit.eskn.reporter.repository.TestRepository;
 
@@ -23,8 +21,12 @@ public class SampleController {
 		return testRepository.findAll();
 	}
 
-	@RequestMapping(value = "/load", method = RequestMethod.POST)
-	public @ResponseBody List<Test> saveTest() {
+	@Transactional
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public @ResponseBody List<Test> saveTest(@RequestBody Test test) {
+		//Test test = new Test();
+
+		testRepository.save(test);
 		return testRepository.findAll();
 	}
 

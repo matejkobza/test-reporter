@@ -5,6 +5,11 @@ angular.module('app')
                 return $http.get("/api/load").then(function(response) {
                     return response;
                 });
+            },
+            'save': function(test) {
+                return $http.post("/api/save", test).then(function(response) {
+                    return response;
+                });
             }
         }
     });

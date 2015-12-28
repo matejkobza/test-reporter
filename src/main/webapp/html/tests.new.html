@@ -1,5 +1,4 @@
 <div id="form">
-    <input type="text" name="parametr" placeholder="ID"/>
     <input type="text" name="parametr" placeholder="AKT" ng-model="newTestController.test.akt"/>
     <input type="text" name="parametr" placeholder="SKUPINA" ng-model="newTestController.test.skupina"/>
     <input type="text" name="parametr" placeholder="KOD" ng-model="newTestController.test.kod"/>
@@ -11,7 +10,7 @@
     <input type="text" name="parametr" placeholder="SRC_PAR" ng-model="newTestController.test.src_par"/>
     <input type="text" name="parametr" placeholder="TRG_PAR" ng-model="newTestController.test.trg_par"/>
     <input type="submit" value="back" ui-sref="tests"/>
-    <input type="submit" value="send" ng-click=""/>
+    <input type="submit" value="send" ng-click="newTestController.send()"/>
 
     <!--{{newTestController.akt}}-->
 </div>
