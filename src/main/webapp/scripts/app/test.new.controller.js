@@ -6,6 +6,7 @@ angular.module('app')
         // pridaju sa dake modelove properties v ktorych budu ulozene hodnoty
         // pomocou service case hodnot, treba v service pridat REST volanie
         var vm = this;
+        $scope.onlyNumbers = /^[0-9]+$/;
 
         vm.test = {
             akt : undefined,
@@ -27,5 +28,18 @@ angular.module('app')
                 // else alert error
                 $state.go('tests');
             })
+        }
+
+        function validate() {
+            var msg = '';
+            var isValid = true;
+            if (!angular.isNumber(vm.test.akt)) {
+                isValid = false;
+                msg += 'Akt musi byt cislo\n';
+            }
+
+            if (!isValid) {
+                alert(msg);
+            }
         }
     });

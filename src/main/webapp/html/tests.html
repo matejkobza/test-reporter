@@ -23,36 +23,16 @@
         </thead>
         <br>
         <tbody>
-        <tr ng-repeat="subjects in tabTesty.subjects">
-            <th>{{ $index + 1 }}</th>
-            <th>{{ subjects.Name }}</th>
-            <th>{{ subjects.Cell }}
-                <input type="checkbox" name="first" checked="checked"/></th>
+        <tr ng-repeat="test in testController.tests">
+            <th>{{ test.id }}</th>
+            <th>{{ test.nazov }}</th>
         </tr>
-        <!-- <tr>
-             <th>4</th>
-             <th>TEST Konania G1</th>
-             <th>Cell 4
-              <input type="radio"  value="second" checked="checked" name="radiobox"/> </th>
-         </tr>-->
         </tbody>
     </table>
 
     <!-- ############## Tabulka Logs ##############-->
 
     <table ng-show="tab == 2" ng-class="{active: tab == 2}">
-        <!-- PRECO TO ROBILO ???????????????????????
-         <tr>
-              <input ng-click="testy()" type="submit" value="Testy" />
-              <input ng-click="logs()" type="submit" value="Logs" />
-          </tr>
-          <br>
-          <tr>
-              <input type="text" placeholder="Vyhľadať" id="search1" ng-model="searchQuery" />
-              <input type="submit" value="Odoslať" />
-              <input type="submit" value="Nový test" />
-          </tr>
-          <br>-->
 
         <thead>
         <tr>
@@ -69,12 +49,6 @@
                 <input type="checkbox" name="first" ng-checked="tabTesty.subjects.indexOf(subjects) != -1"
                        ng-change="toggleAddSubject(subjects)"/></th>
         </tr>
-        <!-- <tr>
-             <th>4</th>
-             <th>TEST Konania G1</th>
-             <th>Cell 4
-              <input type="radio"  value="second" checked="checked" name="radiobox"/> </th>
-         </tr>-->
         </tbody>
     </table>
 </div>

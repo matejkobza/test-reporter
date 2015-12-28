@@ -34,4 +34,11 @@ angular.module('app')
                 vThis.selected.splice(index, 1, subjects);
             }
         }
+
+        $scope.editorOptions = {
+            lineWrapping: true,
+            lineNumbers: true,
+            readOnly: 'nocursor',
+            mode: 'xml',
+        };
     });
