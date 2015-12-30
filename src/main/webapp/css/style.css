@@ -123,6 +123,24 @@ input.button {
     background: #000;
     margin-bottom: 20px;
 }
+.navbar-menu {
+    margin: 0;
+    list-style-type: none;
+    height: 30px;
+}
+.navbar-menu li {
+    float: left;
+    height: 20px;
+    min-height: 20px;
+    padding: 5px;
+}
+.navbar-menu li a {
+    color: #fff;
+    text-decoration: none;
+}
+.navbar-menu li a.active {
+    color: #efefef;
+}
 
 .content {
     padding: 20px;

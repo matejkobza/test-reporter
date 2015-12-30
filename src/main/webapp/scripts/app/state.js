@@ -19,6 +19,6 @@ angular.module('app')
             })
             .state('runs', {
                 url: '/runs',
-                templateUrl: 'html/tests.runs.html'
+                templateUrl: 'html/tests.results.html'
             });
     });
