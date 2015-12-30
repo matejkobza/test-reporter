@@ -33,12 +33,14 @@ angular.module('app')
             else {
                 vThis.selected.splice(index, 1, subjects);
             }
-        }
+        };
 
         $scope.editorOptions = {
             lineWrapping: true,
             lineNumbers: true,
-            readOnly: 'nocursor',
-            mode: 'xml',
+            //mode: 'text/x-plsql'
+            mode: 'text/x-mariadb'
+            //readOnly: 'nocursor',
+
         };
     });

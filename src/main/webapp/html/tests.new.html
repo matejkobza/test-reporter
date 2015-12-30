@@ -1,16 +1,15 @@
 <html>
 
 
-
 <div id="form">
     <input ng-required="true" type="text" ng-pattern="onlyNumbers" name="parametr" placeholder="AKT"
            ng-model="newTestController.test.akt"/>
     <input type="text" name="parametr" placeholder="SKUPINA" ng-model="newTestController.test.skupina"/>
     <input type="text" name="parametr" placeholder="KOD" ng-model="newTestController.test.kod"/>
     <input ng-required="true" type="text" name="parametr" placeholder="NAZOV" ng-model="newTestController.test.nazov"/>
-    <textarea ui-codemirror type="text" name="parametr" placeholder="SRC_SQL"
+    <textarea ui-codemirror ui-codemirror-opts="editorOptions" type="text" name="parametr" placeholder="SRC_SQL"
               ng-model="newTestController.test.src_sql"></textarea>
-    <textarea ui-codemirror type="text" name="parametr" placeholder="TRG_SQL"
+    <textarea ui-codemirror ui-codemirror-opts="editorOptions" type="text" name="parametr" placeholder="TRG_SQL"
               ng-model="newTestController.test.trg_sql"></textarea>
     <input type="text" name="parametr" placeholder="OOND" ng-model="newTestController.test.oond"/>
     <input type="text" name="parametr" placeholder="POPIS" ng-model="newTestController.test.popis"/>
