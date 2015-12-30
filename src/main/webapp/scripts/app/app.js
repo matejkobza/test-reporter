@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ui.router', 'ui.codemirror'])
+angular.module('app', ['ui.router'])
     .run(function () {
     })
     .config(function () {

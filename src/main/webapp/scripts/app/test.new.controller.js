@@ -23,23 +23,22 @@ angular.module('app')
 
         vm.send = function() {
             service.save(vm.test).then(function(response) {
-                // if resp
-                // state.go('tests')
-                // else alert error
-                $state.go('tests');
+                if(validate()){
+                    $state.go('tests');
+                }
+                else{
+                    alert("AHOJ");
+                }
+
             })
         }
 
         function validate() {
-            var msg = '';
-            var isValid = true;
-            if (!angular.isNumber(vm.test.akt)) {
-                isValid = false;
-                msg += 'Akt musi byt cislo\n';
+            if (vm.test.akt && vm.test.nazov) {
+                return true;
             }
-
-            if (!isValid) {
-                alert(msg);
+            else {
+                return false;
             }
         }
     });
