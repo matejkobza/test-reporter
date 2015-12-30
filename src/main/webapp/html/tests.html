@@ -1,19 +1,11 @@
+<input type="text" placeholder="Vyhľadať" id="search"/>
+<input type="submit" value="Odoslať"/>
+<input type="submit" value="Nový test" ui-sref="new"/>
+
+<br/><br/>
+
 <div id="table">
-
-    <!-- ############## Tabulka Testy ##############-->
-
     <table ng-show="tab == 1">
-        <tr>
-            <input ng-click="testy()" type="submit" value="Testy" ng-class="{active: tab == 1}"/>
-            <input ng-click="logs()" type="submit" value="Logs" ng-class="{active: tab == 2}"/>
-        </tr>
-        <br>
-        <tr>
-            <input type="text" placeholder="Vyhľadať" id="search"/>
-            <input type="submit" value="Odoslať"/>
-            <input type="submit" value="Nový test" ui-sref="new"/>
-        </tr>
-        <br>
         <thead>
         <tr>
             <th>ID</th>
@@ -21,7 +13,6 @@
             <th>Výsledok</th>
         </tr>
         </thead>
-        <br>
         <tbody>
         <tr ng-repeat="test in testController.tests">
             <th>{{ test.id }}</th>
@@ -30,10 +21,7 @@
         </tbody>
     </table>
 
-    <!-- ############## Tabulka Logs ##############-->
-
     <table ng-show="tab == 2" ng-class="{active: tab == 2}">
-
         <thead>
         <tr>
             <th>ID</th>

@@ -16,5 +16,9 @@ angular.module('app')
                 url: '/new',
                 templateUrl: 'html/tests.new.html',
                 controller: 'NewTestController as newTestController'
+            })
+            .state('runs', {
+                url: '/runs',
+                templateUrl: 'html/tests.runs.html'
             });
     });

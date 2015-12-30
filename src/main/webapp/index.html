@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="bower_components/codemirror/lib/codemirror.css"/>
 
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body ng-app="app" ng-controller="AppController as appController">
 
@@ -31,7 +31,14 @@
 <script src="scripts/app/test.controller.js"></script>
 <script src="scripts/app/test.new.controller.js"></script>
 
-<div ui-view></div>
+<div class="menu navbar">
+    <ul>
+        <li><a href="javascript:void(0);" ui-sref="tests" ui-sref-active="tests">Testy</a></li>
+        <li><a href="javascript:void(0);" ui-sref="runs" ui-sref-active="runs">História behu</a></li>
+    </ul>
+</div>
+
+<div class="content" ui-view></div>
 
 </body>
 </html>
