@@ -38,9 +38,6 @@ angular.module('app')
         $scope.editorOptions = {
             lineWrapping: true,
             lineNumbers: true,
-            //mode: 'text/x-plsql'
-            mode: 'text/x-mariadb'
-            //readOnly: 'nocursor',
-
+            mode: 'text/x-plsql'
         };
     });
