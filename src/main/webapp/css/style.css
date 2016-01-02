@@ -49,11 +49,12 @@ table tbody tr th {
 input[type="text"],
 input[type="url"],
 input[type="textarea"],
+input[type="password"],
 textarea,
 select {
     display: block;
     padding: 8px;
-    margin: 0 30% 5px;
+    /*margin: 0 30% 5px;*/
     color: #555;
     background: #fff;
     border: 1px solid #ddd;
@@ -66,6 +67,12 @@ select {
     -webkit-box-shadow: 1px 1px 1px #fff;
     -moz-box-shadow: 1px 1px 1px #fff;
     box-shadow: 1px 1px 1px #fff;
+}
+
+label {
+    display: block;
+    padding: 8px;
+    /*margin: 0 30% 5px;*/
 }
 
 textarea {
@@ -127,6 +134,7 @@ input.button {
     margin: 0;
     list-style-type: none;
     height: 30px;
+    padding-left: 20px;
 }
 .navbar-menu li {
     float: left;
@@ -144,4 +152,5 @@ input.button {
 
 .content {
     padding: 20px;
+    padding-top: 0;
 }

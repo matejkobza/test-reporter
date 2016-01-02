@@ -8,17 +8,48 @@ angular.module('app')
         $stateProvider
             .state('tests', {
                 url: '/',
-                templateUrl: 'html/tests.html',
-                controller: 'TestController as testController'
+                views: {
+                    'content': {
+                        templateUrl:'html/tests.html',
+                        controller: 'TestController as testController'
+                    }
+                }
             })
-            .state('new', {
-                //parent: 'tests',
-                url: '/new',
-                templateUrl: 'html/tests.new.html',
-                controller: 'NewTestController as newTestController'
+            .state('tests.new', {
+                parent: 'tests',
+                url: 'new',
+                views: {
+                    'content@': {
+                        templateUrl: 'html/tests.new.html',
+                        controller: 'NewTestController as newTestController'
+                    }
+                }
             })
             .state('runs', {
                 url: '/runs',
-                templateUrl: 'html/tests.results.html'
+                views: {
+                    'content': {
+                        templateUrl: 'html/tests.results.html'
+                    }
+                }
+            })
+            .state('settings', {
+                url: '/settings',
+                views: {
+                    'content': {
+                        templateUrl: 'html/settings.html',
+                        controller: 'SettingsController as settingsController'
+                    }
+                }
+            })
+            .state('settings.new', {
+                parent: 'settings',
+                url: '/new',
+                views: {
+                    'content@': {
+                        templateUrl: 'html/settings.new.html',
+                        controller: 'NewSettingController as newSettingController'
+                    }
+                }
             });
     });

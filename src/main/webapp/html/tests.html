@@ -1,7 +1,10 @@
-<input type="text" placeholder="Vyhľadať" id="search"/>
-<input type="submit" value="Odoslať"/>
+<h1>Zoznam testov</h1>
+<!--<input type="text" placeholder="Vyhľadať" id="search"/>-->
+<!--<input type="submit" value="Odoslať"/>-->
 
-<br/><br/>
+<!--<br/><br/>-->
+
+<input type="button" ui-sref="tests.new" value="Pridať test"/>
 
 <div id="table">
     <table ng-show="tab == 1">
@@ -14,8 +17,9 @@
         </thead>
         <tbody>
         <tr ng-repeat="test in testController.tests">
-            <th>{{ test.id }}</th>
-            <th>{{ test.nazov }}</th>
+            <td>{{ test.id }}</td>
+            <td>{{ test.nazov }}</td>
+            <td><a href="javascript:void(0);" ng-click="">Spustiť</a></td>
         </tr>
         </tbody>
     </table>
