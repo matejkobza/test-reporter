@@ -33,18 +33,17 @@ public class Test {
     @Column(name = "TRG_SQL")
     private String trg_sql;
 
-    @Column(name = "OOND")
-    private String oond;
+    @Column(name = "COND")
+    private String cond;
 
     @Column(name = "POPIS")
     private String popis;
 
-    @Column(name = "SRC_PAR")
-    private String src_par;
+    @ManyToOne
+    private DataSource source;
 
-    @Column(name = "TRG_PAR")
-    private String trg_par;
-
+    @ManyToOne
+    private DataSource target;
 
     public long getId() {
         return id;
@@ -102,12 +101,12 @@ public class Test {
         this.trg_sql = trg_sql;
     }
 
-    public String getOond() {
-        return oond;
+    public String getCond() {
+        return cond;
     }
 
-    public void setOond(String oond) {
-        this.oond = oond;
+    public void setCond(String cond) {
+        this.cond = cond;
     }
 
     public String getPopis() {
@@ -117,21 +116,4 @@ public class Test {
     public void setPopis(String popis) {
         this.popis = popis;
     }
-
-    public String getSrc_par() {
-        return src_par;
-    }
-
-    public void setSrc_par(String src_par) {
-        this.src_par = src_par;
-    }
-
-    public String getTrg_par() {
-        return trg_par;
-    }
-
-    public void setTrg_par(String trg_par) {
-        this.trg_par = trg_par;
-    }
-
 }

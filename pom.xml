@@ -67,6 +67,19 @@
         </dependency>
         <!-- QueryDSL -->
 
+        <!-- Oracle connector -->
+        <dependency>
+            <groupId>com.oracle.ojdbc6</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.4.0</version>
+        </dependency>
+
+        <!-- MySQL connector -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>com.querydsl</groupId>-->
             <!--<artifactId>querydsl-jpa</artifactId>-->
