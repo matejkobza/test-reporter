@@ -10,6 +10,11 @@ angular.module('app')
                 return $http.post("/api/save", test).then(function(response) {
                     return response;
                 });
+            },
+            'saveSettings': function(test) {
+                return $http.post("/api/save", test).then(function (response) {
+                    return response;
+                });
             }
         }
     });
