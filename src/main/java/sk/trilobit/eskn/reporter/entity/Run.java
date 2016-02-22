@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Time;
 
 /**
  * Created by doloi72 on 18.12.2015.
@@ -44,11 +45,11 @@ public class Run {
 
 
     public long getRun_id() {
-        return run_id;
+        return id;
     }
 
     public void setRun_id(long run_id) {
-        this.run_id = run_id;
+        this.id = run_id;
     }
 
     public int getTest_id() {
