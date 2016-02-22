@@ -11,8 +11,8 @@ angular.module('app')
                     return response;
                 });
             },
-            'saveSettings': function(test) {
-                return $http.post("/api/save", test).then(function (response) {
+            'saveSettings': function(settings) {
+                return $http.post("/api/save", settings).then(function (response) {
                     return response;
                 });
             }

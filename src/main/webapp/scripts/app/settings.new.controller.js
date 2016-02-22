@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('app')
-    .controller('NewSettingController', function ($scope) {
+    .controller('NewSettingController', function ($scope, service, $state) {
 
         var vp = this;
         $scope.onlyNumbers = /^[0-9]+$/;
 
-        vm.settings = {
+        vp.settings = {
             driverType: undefined,
             serverName: undefined,
             portNumber: undefined,
@@ -18,6 +18,12 @@ angular.module('app')
 
         vp.send = send;
 
+        function send() {
 
+                service.save(vp.settings).then(function (response) {
+                    $state.go('settings');
+                });
+
+        }
 
     });
