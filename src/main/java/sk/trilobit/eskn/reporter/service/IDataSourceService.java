@@ -6,7 +6,7 @@ package sk.trilobit.eskn.reporter.service;
  * Date: 02.01.16
  * Time: 13:02
  */
-public interface IDataSource {
+public interface IDataSourceService {
 
 
 
