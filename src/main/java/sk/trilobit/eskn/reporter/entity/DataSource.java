@@ -11,25 +11,25 @@ import javax.persistence.*;
 @Table(name = "DataSource_DEF")
 public class DataSource {
 
-    @Column(name = "type")
+    @Column
     private String jdbcUrl;
-    
-    @Column(name = "driverType")
+
+    @Column
     private String driverClassName;
 
-    @Column(name = "serverName")
+    @Column
     private String serverName;
 
-    @Column(name = "portNumber")
+    @Column
     private String portNumber;
 
-    @Column(name = "databaseName")
+    @Column
     private String databaseName;
 
-    @Column(name = "user")
+    @Column
     private String user;
 
-    @Column(name = "password")
+    @Column
     private String password;
 
 }
