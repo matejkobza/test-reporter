@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table
-public class DataSourceService {
+public class DataSource {
 
     @Id
     @Column

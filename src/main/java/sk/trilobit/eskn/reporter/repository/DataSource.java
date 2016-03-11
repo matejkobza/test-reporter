@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Date: 21.12.15
  * Time: 9:09
  */
-public interface DataSourceService extends JpaRepository<DataSourceService, Long> {
+public interface DataSource extends JpaRepository<DataSource, Long> {
 
 }
