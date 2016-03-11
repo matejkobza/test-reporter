@@ -5,7 +5,7 @@ angular.module('app')
         var vp = this;
 
 
-        service.saveSettings().then(function (response) {
+        service.loadSettings().then(function (response) {
             vp.settings = response.data;
         });
     });
