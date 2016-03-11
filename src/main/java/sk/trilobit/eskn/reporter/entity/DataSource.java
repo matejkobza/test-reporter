@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "DataSource_DEF")
+@Table
 public class DataSource {
 
     @Column
