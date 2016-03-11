@@ -13,7 +13,7 @@ public class DataSource {
     private String driverClassName;
     private String jdbcUrl;
     private String serverName;
-    private int portNumber;
+    private String portNumber;
     private String databaseName;
     private String user;
     private String password;
@@ -42,11 +42,11 @@ public class DataSource {
         this.serverName = serverName;
     }
 
-    public int getPortNumber() {
+    public String getPortNumber() {
         return portNumber;
     }
 
-    public void setPortNumber(int portNumber) {
+    public void setPortNumber(String portNumber) {
         this.portNumber = portNumber;
     }
 
