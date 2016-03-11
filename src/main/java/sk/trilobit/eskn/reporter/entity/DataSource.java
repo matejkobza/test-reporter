@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Table
 public class DataSource {
 
+    @Id
     @Column
     private String jdbcUrl;
 
@@ -31,5 +32,7 @@ public class DataSource {
 
     @Column
     private String password;
+
+
 
 }
