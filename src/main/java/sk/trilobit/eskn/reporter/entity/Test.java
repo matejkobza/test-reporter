@@ -47,10 +47,10 @@ public class Test {
     private String popis;
 
     @ManyToOne
-    private DataSource source;
+    private DataSourceService source;
 
     @ManyToOne
-    private DataSource target;
+    private DataSourceService target;
 
 
     public int getAkt() {
