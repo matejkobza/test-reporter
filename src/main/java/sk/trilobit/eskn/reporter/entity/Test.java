@@ -7,20 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "TESTY_DEF")
-public class Test {
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(final long id) {
-        this.id = id;
-    }
-
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class Test extends EntityWithId {
 
     @Column(name = "AKT")
     private int akt;

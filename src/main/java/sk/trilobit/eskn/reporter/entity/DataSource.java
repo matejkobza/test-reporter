@@ -9,11 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table
-public class DataSource {
-
-    @Id
-    @Column
-    private String jdbcUrl;
+public class DataSource extends EntityWithId {
 
     @Column
     private String driverClassName;

@@ -2,6 +2,8 @@ package sk.trilobit.eskn.reporter.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Time;
@@ -11,19 +13,7 @@ import java.sql.Time;
  */
 @Entity
 @Table(name = "TESTY_RUNS")
-public class Run {
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(final long id) {
-        this.id = id;
-    }
-
-    @Id
-    @Column(name = "RUN_ID")
-    private long id;
+public class Run extends EntityWithId {
 
     @Column(name = "TEST_ID")
     private int test_id;
@@ -43,60 +33,4 @@ public class Run {
     @Column(name = "CAS")
     private Time cas;
 
-
-    public long getRun_id() {
-        return id;
-    }
-
-    public void setRun_id(long run_id) {
-        this.id = run_id;
-    }
-
-    public int getTest_id() {
-        return test_id;
-    }
-
-    public void setTest_id(int test_id) {
-        this.test_id = test_id;
-    }
-
-   public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public String getSrc_result() {
-        return src_result;
-    }
-
-    public void setSrc_result(String src_result) {
-        this.src_result = src_result;
-    }
-
-    public String getTrg_result() {
-        return trg_result;
-    }
-
-    public void setTrg_result(String trg_result) {
-        this.trg_result = trg_result;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public Time getCas() {
-        return cas;
-    }
-
-    public void setCas(Time cas) {
-        this.cas = cas;
-    }
 }

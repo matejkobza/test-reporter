@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 @RestController
-@RequestMapping(Application.ROOT_API)
+@RequestMapping(Application.ROOT_API + "/test")
 public class TestsResource {
 
 	@Inject
