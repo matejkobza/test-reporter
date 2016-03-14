@@ -35,6 +35,7 @@ angular.module('app')
             }
         };
 
+
         $scope.editorOptions = {
             lineWrapping: true,
             lineNumbers: true,

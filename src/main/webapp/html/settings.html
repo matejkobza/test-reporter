@@ -11,6 +11,7 @@
         <th>Názov servera</th>
         <th>Názov databázy</th>
         <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -18,7 +19,8 @@
         <td>{{ setting.driverClassName }}</td>
         <td>{{ setting.serverName }}</td>
         <td>{{ setting.databaseName }}</td>
-        <td><a href="javascript:void(0);" ng-click="">Upraviť</a></td>
+        <td><a href="javascript:void(0);" ng-click="newSettingController.deleteController()">Upraviť</a></td>
+        <td><a href="javascript:void(0);" ng-click="">Zmazať</a></td>
     </tr>
     </tbody>
 </table>

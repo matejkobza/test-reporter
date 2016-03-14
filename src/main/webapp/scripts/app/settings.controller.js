@@ -8,4 +8,6 @@ angular.module('app')
         service.loadSettings().then(function (response) {
             vp.settings = response.data;
         });
+
+
     });

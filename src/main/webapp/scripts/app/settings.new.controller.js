@@ -16,10 +16,17 @@ angular.module('app')
 
         };
         vm.send = send;
+        vm.deleteController = deleteController;
 
         // sends data to server
         function send() {
             service.saveSettings(vm.setting).then(function (response) {
+                $state.go('settings');
+            });
+        }
+
+        function deleteController() {
+            service.deleteSettings(vm.setting).then(function (response) {
                 $state.go('settings');
             });
         }

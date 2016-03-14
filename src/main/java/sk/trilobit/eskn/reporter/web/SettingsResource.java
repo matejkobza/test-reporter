@@ -33,4 +33,10 @@ public class SettingsResource {
         this.dataSourceService.save(dataSource);
     }
 
+    @RequestMapping("/delete")
+    public void delete(@RequestBody DataSource dataSource) {this.dataSourceService.delete(dataSource);}
+
+    @RequestMapping("/update")
+    public void update(@RequestBody DataSource dataSource) {this.dataSourceService.update(dataSource);}
+
 }

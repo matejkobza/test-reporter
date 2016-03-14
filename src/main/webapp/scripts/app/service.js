@@ -20,6 +20,11 @@ angular.module('app')
                 return $http.get("/api/settings/get").then(function (response) {
                     return response;
                 });
+            },
+            'deleteSettings': function(settings) {
+                return $http.post("/api/settings/delete", settings).then(function (response) {
+                    return response;
+                });
             }
         }
     });
