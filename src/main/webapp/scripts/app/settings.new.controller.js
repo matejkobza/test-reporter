@@ -3,10 +3,10 @@
 angular.module('app')
     .controller('NewSettingController', function ($scope, service, $state) {
 
-        var vp = this;
+        var vm = this;
         $scope.onlyNumbers = /^[0-9]+$/;
 
-        vp.setting = {
+        vm.setting = {
             driverType: undefined,
             serverName: undefined,
             portNumber: undefined,
@@ -15,15 +15,15 @@ angular.module('app')
             password: undefined
 
         };
+        vm.send = send;
 
-        vp.send = send;
-
+        // sends data to server
         function send() {
-
-                service.saveSettings(vp.setting).then(function (response) {
-                    $state.go('settings');
-                });
-
+            service.saveSettings(vm.setting).then(function (response) {
+                $state.go('settings');
+            });
         }
+
+        return vm;
 
     });

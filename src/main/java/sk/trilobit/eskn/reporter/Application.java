@@ -20,7 +20,7 @@ public class Application {
 
     public static void main(String[] args) throws UnknownHostException {
 
-        System.setProperty("server.port", "8080");
+        System.setProperty("server.port", "8081");
 
         ApplicationContext appCtx = SpringApplication.run(Application.class, args);
 

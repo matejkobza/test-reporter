@@ -9,29 +9,29 @@
 </div>
 <div class="row">
     <label for="driverType">Typ ovládača</label>
-    <select id="driverType">
+    <select id="driverType" ng-model="newSettingController.setting.driver">
         <option>thin</option>
     </select>
 </div>
 <div class="row">
     <label for="serverName">Názov servera</label>
-    <input id="serverName" type="text" placeholder=""/>
+    <input id="serverName" type="text" placeholder="" ng-model="newSettingController.setting.serverName"/>
 </div>
 <div class="row">
     <label for="portNumber">Číslo portu</label>
-    <input id="portNumber" type="text" placeholder=""/>
+    <input id="portNumber" type="text" placeholder="" ng-model="newSettingController.setting.port"/>
 </div>
 <div class="row">
     <label for="databaseName">Názov databázy</label>
-    <input id="databaseName" type="text" placeholder=""/>
+    <input id="databaseName" type="text" placeholder="" ng-model="newSettingController.setting.databaseName"/>
 </div>
 <div class="row">
     <label for="user">Prihlasovacie meno</label>
-    <input id="user" type="text" placeholder=""/>
+    <input id="user" type="text" placeholder="" ng-model="newSettingController.setting.user"/>
 </div>
 <div class="row">
     <label for="password">Prihlasovacie heslo</label>
-    <input id="password" type="password" placeholder=""/>
+    <input id="password" type="password" placeholder="" ng-model="newSettingController.setting.password"/>
 </div>
 <br />
 <input type="submit" ui-sref="settings" value="Späť"/>
