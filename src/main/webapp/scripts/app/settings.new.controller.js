@@ -20,7 +20,7 @@ angular.module('app')
 
         function send() {
 
-                service.save(vp.setting).then(function () {
+                service.save(vp.setting).then(function (response) {
                     $state.go('settings');
                 });
 
