@@ -2,12 +2,17 @@
 
 angular.module('app')
     .controller('SettingsController', function ($scope, service) {
-        var vp = this;
-
+        var vm = this;
+        vm.deleteController = deleteController;
 
         service.loadSettings().then(function (response) {
-            vp.settings = response.data;
+            vm.settings = response.data;
         });
 
+        function deleteController() {
+            service.deleteSettings(vm.setting).then(function (response) {
+                $state.go('settings');
+            });
+        }
 
     });

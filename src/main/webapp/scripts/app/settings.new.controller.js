@@ -16,7 +16,6 @@ angular.module('app')
 
         };
         vm.send = send;
-        vm.deleteController = deleteController;
 
         // sends data to server
         function send() {
@@ -25,11 +24,7 @@ angular.module('app')
             });
         }
 
-        function deleteController() {
-            service.deleteSettings(vm.setting).then(function (response) {
-                $state.go('settings');
-            });
-        }
+
 
         return vm;
 
