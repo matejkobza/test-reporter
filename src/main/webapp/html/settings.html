@@ -20,7 +20,7 @@
         <td>{{ setting.serverName }}</td>
         <td>{{ setting.databaseName }}</td>
         <td><a href="javascript:void(0);" ng-click="">Upraviť</a></td>
-        <td><a href="javascript:void(0);" ng-click="settingsController.deleteSetting()">Zmazať</a></td>
+        <td><a href="javascript:void(0);" ng-click="settingsController.deleteSetting(setting.id)">Zmazať</a></td>
     </tr>
     </tbody>
 </table>
