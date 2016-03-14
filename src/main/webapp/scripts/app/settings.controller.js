@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .controller('SettingsController', function ($scope, service) {
+    .controller('SettingsController', function ($scope, service, $state) {
         var vm = this;
         vm.deleteSetting = deleteSetting;
 
@@ -9,8 +9,10 @@ angular.module('app')
             vm.settings = response.data;
         });
 
+
         function deleteSetting() {
-            service.deleteSettings(vm.setting).then(function (response) {
+            service.deleteSettings(vm.settings).then(function (response) {
+                console.debug("DEBUG: ", vm.settings);
                 $state.go('settings');
             });
         }
