@@ -6,7 +6,6 @@ angular.module('app')
 
 
         service.loadSettings().then(function (response) {
-            console.debug(response.data);
             vp.settings = response.data;
         });
     });
