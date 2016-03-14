@@ -2,15 +2,9 @@
 
 <div class="row">
     <label for="type">Databáza</label>
-    <select id="type">
+    <select id="type" ng-model="newSettingController.setting.driverClassName">
         <option>Oracle</option>
         <option>MySQL</option>
-    </select>
-</div>
-<div class="row">
-    <label for="driverType">Typ ovládača</label>
-    <select id="driverType" ng-model="newSettingController.setting.driverType">
-        <option>thin</option>
     </select>
 </div>
 <div class="row">

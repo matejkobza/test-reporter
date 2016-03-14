@@ -7,21 +7,17 @@
 <table>
     <thead>
     <tr>
+        <th>Databáza</th>
         <th>Názov servera</th>
-        <th>Číslo portu</th>
         <th>Názov databázy</th>
-        <th>Prihlasovacie meno</th>
-        <th>Prihlasovacie heslo</th>
         <th></th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="setting in settingsController.settings">
+        <td>{{ setting.driverClassName }}</td>
         <td>{{ setting.serverName }}</td>
-        <td>{{ setting.portNumber }}</td>
         <td>{{ setting.databaseName }}</td>
-        <td>{{ setting.user }}</td>
-        <td>{{ setting.password }}</td>
         <td><a href="javascript:void(0);" ng-click="">Upraviť</a></td>
     </tr>
     </tbody>

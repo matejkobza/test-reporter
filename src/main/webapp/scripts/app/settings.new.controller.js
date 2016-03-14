@@ -7,7 +7,7 @@ angular.module('app')
         $scope.onlyNumbers = /^[0-9]+$/;
 
         vm.setting = {
-            driverType: undefined,
+            driverClassName: undefined,
             serverName: undefined,
             portNumber: undefined,
             databaseName: undefined,
