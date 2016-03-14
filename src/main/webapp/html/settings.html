@@ -7,15 +7,18 @@
 <table>
     <thead>
     <tr>
-        <th>#</th>
+        <th>Port</th>
         <th>Názov</th>
         <th>Typ</th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-
+    <tr ng-repeat="setting in settingsController.settings">
+        <td>{{ setting.portNumber }}</td>
+        <td>{{ setting.serverName }}</td>
+        <td>{{ setting.driverType }}</td>
+        <td><a href="javascript:void(0);" ng-click="">Upraviť</a></td>
     </tr>
     </tbody>
 </table>

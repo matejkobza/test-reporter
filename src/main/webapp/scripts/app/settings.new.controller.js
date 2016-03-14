@@ -6,7 +6,7 @@ angular.module('app')
         var vp = this;
         $scope.onlyNumbers = /^[0-9]+$/;
 
-        vp.settings = {
+        vp.setting = {
             driverType: undefined,
             serverName: undefined,
             portNumber: undefined,
@@ -20,7 +20,7 @@ angular.module('app')
 
         function send() {
 
-                service.save(vp.settings).then(function (response) {
+                service.save(vp.setting).then(function () {
                     $state.go('settings');
                 });
 

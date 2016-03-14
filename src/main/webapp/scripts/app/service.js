@@ -11,8 +11,8 @@ angular.module('app')
                     return response;
                 });
             },
-            'loadSettings': function(settings) {
-                return $http.get("/api/load", settings).then(function (response) {
+            'loadSettings': function() {
+                return $http.get("/api/load").then(function (response) {
                     return response;
                 });
             }
