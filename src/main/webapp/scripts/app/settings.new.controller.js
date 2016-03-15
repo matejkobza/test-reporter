@@ -17,6 +17,8 @@ angular.module('app')
         };
         vm.send = send;
 
+
+
         // sends data to server
         function send() {
             service.saveSettings(vm.setting).then(function (response) {

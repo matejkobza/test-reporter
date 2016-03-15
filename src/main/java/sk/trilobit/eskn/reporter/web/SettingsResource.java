@@ -35,9 +35,12 @@ public class SettingsResource {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public void delete(@RequestBody DataSource dataSource) {this.dataSourceService.delete(dataSource);}
+    public void delete(Long id) {this.dataSourceService.delete(id);}
 
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public void update(@RequestBody DataSource dataSource) {this.dataSourceService.update(dataSource);}
+
+    @RequestMapping(value = "/findOne", method = RequestMethod.POST)
+    public void findOne(Long id) {this.dataSourceService.findOne(id);}
 
 }

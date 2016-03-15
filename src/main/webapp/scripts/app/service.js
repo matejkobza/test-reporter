@@ -22,7 +22,18 @@ angular.module('app')
                 });
             },
             'deleteSettings': function(settings) {
-                return $http.post("/api/settings/delete", {settings: settings}).then(function (response) {
+                return $http.post("/api/settings/delete", settings).then(function (response) {
+                    console.debug("DEBUG: ", settings);
+                    return response;
+                });
+            },
+            'updateSettings': function(settings) {
+                return $http.post("/api/settings/update", {settings: settings}).then(function (response) {
+                    return response;
+                });
+            },
+            'findOneSettings': function(settings) {
+                return $http.post("/api/settings/findOne", {settings: settings}).then(function (response) {
                     return response;
                 });
             }
