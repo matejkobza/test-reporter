@@ -1,31 +1,31 @@
-<h1>New datasource</h1>
+<h1>Update datasource</h1>
 
 <div class="row">
     <label for="type">Databáza</label>
-    <select id="type" ng-model="newSettingController.setting.driverClassName">
+    <select id="type" ng-model="updateSettingController.setting.driverClassName">
         <option>Oracle</option>
         <option>MySQL</option>
     </select>
 </div>
 <div class="row">
     <label for="serverName">Názov servera</label>
-    <input id="serverName" type="text" placeholder="" ng-model="newSettingController.setting.serverName"/>
+    <input id="serverName" type="text" placeholder="" ng-model="updateSettingController.setting.serverName"/>
 </div>
 <div class="row">
     <label for="portNumber">Číslo portu</label>
-    <input id="portNumber" type="text" placeholder="" ng-model="newSettingController.setting.portNumber"/>
+    <input id="portNumber" type="text" placeholder="" ng-model="updateSettingController.setting.portNumber"/>
 </div>
 <div class="row">
     <label for="databaseName">Názov databázy</label>
-    <input id="databaseName" type="text" placeholder="" ng-model="newSettingController.setting.databaseName"/>
+    <input id="databaseName" type="text" placeholder="" ng-model="updateSettingController.setting.databaseName"/>
 </div>
 <div class="row">
     <label for="user">Prihlasovacie meno</label>
-    <input id="user" type="text" placeholder="" ng-model="newSettingController.setting.user"/>
+    <input id="user" type="text" placeholder="" ng-model="updateSettingController.setting.user"/>
 </div>
 <div class="row">
     <label for="password">Prihlasovacie heslo</label>
-    <input id="password" type="password" placeholder="" ng-model="newSettingController.setting.password"/>
+    <input id="password" type="password" placeholder="" ng-model="updateSettingController.setting.password"/>
 </div>
 <br />
 <input type="submit" ui-sref="settings" value="Back"/>

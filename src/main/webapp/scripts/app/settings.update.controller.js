@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .controller('NewSettingController', function ($scope, service, $state) {
+    .controller('UpdateSettingController', function ($scope, service, $state) {
 
         var vm = this;
         $scope.onlyNumbers = /^[0-9]+$/;

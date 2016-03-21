@@ -1,9 +1,6 @@
 package sk.trilobit.eskn.reporter.web;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sk.trilobit.eskn.reporter.Application;
 import sk.trilobit.eskn.reporter.entity.DataSource;
 import sk.trilobit.eskn.reporter.service.DataSourceService;
@@ -35,12 +32,16 @@ public class SettingsResource {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public void delete(Long id) {this.dataSourceService.delete(id);}
+    public void delete(@RequestBody Long deleteId) {
+        this.dataSourceService.delete(deleteId);
+    }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public void update(@RequestBody DataSource dataSource) {this.dataSourceService.update(dataSource);}
 
-    @RequestMapping(value = "/findOne", method = RequestMethod.POST)
-    public void findOne(Long id) {this.dataSourceService.findOne(id);}
+    @RequestMapping(value = "/findOne", method = RequestMethod.GET)
+    public void findOne(@RequestParam(name = "settings", required = true) Long settings) {
+        this.dataSourceService.findOne(settings);
+    }
 
 }

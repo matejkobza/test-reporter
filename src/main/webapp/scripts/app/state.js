@@ -51,5 +51,15 @@ angular.module('app')
                         controller: 'NewSettingController as newSettingController'
                     }
                 }
+            })
+            .state('settings.update', {
+                parent: 'settings',
+                url: '/update',
+                views: {
+                    'content@': {
+                        templateUrl: 'html/settings.update.html',
+                        controller: 'UpdateSettingController as updateSettingController'
+                    }
+                }
             });
     });

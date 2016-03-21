@@ -22,8 +22,8 @@ angular.module('app')
                 });
             },
             'deleteSettings': function(settings) {
+                console.debug("DEBUG2: ", settings);
                 return $http.post("/api/settings/delete", settings).then(function (response) {
-                    console.debug("DEBUG: ", settings);
                     return response;
                 });
             },
@@ -33,9 +33,12 @@ angular.module('app')
                 });
             },
             'findOneSettings': function(settings) {
-                return $http.post("/api/settings/findOne", {settings: settings}).then(function (response) {
+                return $http.get("/api/settings/findOne", {
+                    params: {
+                    settings: settings
+                }}).then(function (response) {
                     return response;
                 });
             }
-        }
+        };
     });
