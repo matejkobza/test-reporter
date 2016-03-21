@@ -22,7 +22,6 @@ angular.module('app')
                 });
             },
             'deleteSettings': function(settings) {
-                console.debug("DEBUG2: ", settings);
                 return $http.post("/api/settings/delete", settings).then(function (response) {
                     return response;
                 });

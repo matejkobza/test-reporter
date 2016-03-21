@@ -14,7 +14,6 @@ angular.module('app')
 
 
         function deleteSetting(subjects) {
-            console.debug("DEBUG1: ", subjects);
             service.deleteSettings(subjects).then(function (response) {
                 $state.go('settings');
             });
@@ -27,10 +26,10 @@ angular.module('app')
         }
 
         function findOneSetting(subjects) {
-            console.debug("DEBUG: ", subjects);
+            console.debug("DEBUG1: ", subjects);
             service.findOneSettings(subjects).then(function (response) {
                 vm.settings = response.data;
-                console.debug("DEBUG: ", vm.settings);
+                console.debug("DEBUG2: ", response.data);
             });
         }
 
