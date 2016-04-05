@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('app')
-    .controller('UpdateSettingController', function ($scope, service, $state) {
+    .controller('UpdateSettingController', function ($scope, service, $state, $stateParams) {
 
         var vm = this;
         $scope.onlyNumbers = /^[0-9]+$/;
+        var settingId = $stateParams.id;
 
         vm.setting = {
             driverClassName: undefined,
@@ -14,19 +15,22 @@ angular.module('app')
             user: undefined,
             password: undefined
         };
-        vm.send = send;
+        vm.update = update;
 
 
-
-        // sends data to server
-        function send() {
-            service.saveSettings(vm.setting).then(function (response) {
+        function update() {
+            service.updateSettings(vm.setting).then(function (response) {
                 $state.go('settings');
             });
         }
 
+        function init() {
+            service.findOneSettings(settingId).then(function (response) {
+                vm.setting = response.data;
+            });
+        }
 
+        init();
 
         return vm;
-
     });

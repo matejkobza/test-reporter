@@ -54,7 +54,7 @@ angular.module('app')
             })
             .state('settings.update', {
                 parent: 'settings',
-                url: '/update',
+                url: '/update/:id',
                 views: {
                     'content@': {
                         templateUrl: 'html/settings.update.html',

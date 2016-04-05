@@ -27,14 +27,14 @@ angular.module('app')
                 });
             },
             'updateSettings': function(settings) {
-                return $http.post("/api/settings/update", {settings: settings}).then(function (response) {
+                return $http.post("/api/settings/update", settings).then(function (response) {
                     return response;
                 });
             },
-            'findOneSettings': function(settings) {
+            'findOneSettings': function(setting) {
                 return $http.get("/api/settings/findOne", {
                     params: {
-                    settings: settings
+                    setting: setting
                 }}).then(function (response) {
                     return response;
                 });

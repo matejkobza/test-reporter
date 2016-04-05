@@ -40,8 +40,8 @@ public class SettingsResource {
     public void update(@RequestBody DataSource dataSource) {this.dataSourceService.update(dataSource);}
 
     @RequestMapping(value = "/findOne", method = RequestMethod.GET)
-    public void findOne(@RequestParam(name = "settings", required = true) Long settings) {
-        this.dataSourceService.findOne(settings);
+    public DataSource findOne(@RequestParam(name = "setting", required = true) Long setting) {
+       return (DataSource) this.dataSourceService.findOne(setting);
     }
 
 }
