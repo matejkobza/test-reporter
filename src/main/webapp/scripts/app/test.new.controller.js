@@ -19,6 +19,8 @@ angular.module('app')
             trg_par: undefined
         };
 
+        vm.dataSources = undefined;
+
         vm.send = send;
         vm.init = init;
 
@@ -41,10 +43,7 @@ angular.module('app')
 
         function init() {
             service.loadSettings().then(function (response) {
-                vm.test.src_par = response.data;
-                vm.test.trg_par = response.data;
-                console.debug("DEBUG: ", vm.test.src_par);
-
+                vm.dataSources = response.data;
             });
         }
 

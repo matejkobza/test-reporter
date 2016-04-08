@@ -20,7 +20,7 @@
     <div class="row">
         <label for="trg">Target</label>
         <select id="trg" ng-model="newTestController.test">
-            <option>{{ newTestController.test }}</option>
+            <option ng-repeat="dataSource in newTestController.dataSources" value="{{dataSource.id}}">{{dataSource.host}}</option>
         </select>
     </div>
     <!--<input type="text" name="parametr" placeholder="SRC_PAR" ng-model="newTestController.test.src_par"/> -->

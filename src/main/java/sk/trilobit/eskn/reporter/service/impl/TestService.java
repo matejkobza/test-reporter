@@ -1,10 +1,11 @@
-package sk.trilobit.eskn.reporter.service;
+package sk.trilobit.eskn.reporter.service.impl;
 
 import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.stereotype.Service;
 import sk.trilobit.eskn.reporter.entity.Test;
 import sk.trilobit.eskn.reporter.repository.RunRepository;
 import sk.trilobit.eskn.reporter.repository.TestRepository;
+import sk.trilobit.eskn.reporter.service.ITestService;
 
 import javax.inject.Inject;
 import java.sql.Connection;

@@ -3,7 +3,7 @@ package sk.trilobit.eskn.reporter.web;
 import org.springframework.web.bind.annotation.*;
 import sk.trilobit.eskn.reporter.Application;
 import sk.trilobit.eskn.reporter.entity.DataSource;
-import sk.trilobit.eskn.reporter.service.DataSourceService;
+import sk.trilobit.eskn.reporter.service.impl.DataSourceService;
 
 import javax.inject.Inject;
 import java.util.List;

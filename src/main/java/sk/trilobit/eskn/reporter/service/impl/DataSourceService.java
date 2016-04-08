@@ -1,9 +1,11 @@
-package sk.trilobit.eskn.reporter.service;
+package sk.trilobit.eskn.reporter.service.impl;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import sk.trilobit.eskn.reporter.entity.DataSource;
 import sk.trilobit.eskn.reporter.repository.DataSourceRepository;
+import sk.trilobit.eskn.reporter.service.AbstractCrudService;
+import sk.trilobit.eskn.reporter.service.IDataSourceService;
 
 import javax.inject.Inject;
 import java.util.List;
