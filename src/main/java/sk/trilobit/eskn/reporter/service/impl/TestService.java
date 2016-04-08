@@ -9,7 +9,6 @@ import sk.trilobit.eskn.reporter.service.ITestService;
 
 import javax.inject.Inject;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
@@ -27,17 +26,24 @@ public class TestService implements ITestService {
     @Inject
     private RunRepository runRepository;
 
-    private Connection getOracleConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-
-        return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:mkyong", "username", "password");
+    private Connection getConnection(String className, String host, String dbName, String userName, String password) throws ClassNotFoundException {
+        Class.forName(className);
+//        String connection =
+//        return DriverManager.getConnection()
+        throw new NotYetImplementedException("getConnection");
     }
 
-    private Connection getMySQLConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
+//    private Connection getOracleConnection(String className, String host, String dbName, String username, String password) throws ClassNotFoundException, SQLException {
+//        Class.forName("oracle.jdbc.driver.OracleDriver");
+//
+//        return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:mkyong", username, password);
+//    }
 
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname", "username", "password");
-    }
+//    private Connection getMySQLConnection() throws ClassNotFoundException, SQLException {
+//        Class.forName("com.mysql.jdbc.Driver");
+//
+//        return DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname", "username", "password");
+//    }
 
     private void closeConnection(Connection connection) throws SQLException {
         connection.close();
@@ -48,7 +54,7 @@ public class TestService implements ITestService {
 
         // getSourceConnection, getTargetConnection
 
-        throw new NotYetImplementedException();
+        throw new NotYetImplementedException("runTest");
     }
 
 }
