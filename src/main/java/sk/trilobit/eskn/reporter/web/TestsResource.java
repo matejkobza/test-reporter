@@ -35,7 +35,7 @@ public class TestsResource {
 	public
 	@ResponseBody
 	List<Test> saveTest(@RequestBody TestDTO test) {
-		testService.save(test);
+		this.testService.save(test);
 		return testRepository.findAll();
 	}
 

@@ -44,6 +44,7 @@ angular.module('app')
         function init() {
             service.loadSettings().then(function (response) {
                 vm.dataSources = response.data;
+
             });
         }
 

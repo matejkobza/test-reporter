@@ -1,5 +1,7 @@
 package sk.trilobit.eskn.reporter.service;
 
+import sk.trilobit.eskn.reporter.web.dto.TestDTO;
+
 /**
  * Created with IntelliJ IDEA.
  * User: matejkobza
@@ -15,4 +17,5 @@ public interface ITestService {
      */
     boolean runTest(Long testId);
 
+    void save(TestDTO test);
 }

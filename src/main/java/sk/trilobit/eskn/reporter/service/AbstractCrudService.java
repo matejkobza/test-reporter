@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import sk.trilobit.eskn.reporter.entity.EntityWithId;
+import sk.trilobit.eskn.reporter.web.dto.TestDTO;
 
 import java.util.List;
 
@@ -38,6 +39,10 @@ public abstract class AbstractCrudService<E extends EntityWithId> {
 
     public E findOne(Long id) {
         return (E)getRepository().findOne(id);
+    }
+
+    public void save(TestDTO test) {
+        getRepository().save(test);
     }
 
 }
