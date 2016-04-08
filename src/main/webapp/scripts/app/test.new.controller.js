@@ -20,6 +20,7 @@ angular.module('app')
         };
 
         vm.send = send;
+        vm.init = init;
 
         /**
          * if valid then send data and store them
@@ -37,5 +38,16 @@ angular.module('app')
         function validate() {
             return vm.test.akt.length && vm.test.nazov.length;
         }
+
+        function init() {
+            service.loadSettings().then(function (response) {
+                vm.test.src_par = response.data;
+                vm.test.trg_par = response.data;
+                console.debug("DEBUG: ", vm.test.src_par);
+
+            });
+        }
+
+        init();
 
     });
