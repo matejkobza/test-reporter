@@ -8,13 +8,13 @@ angular.module('app')
 
         vm.test = {
             akt: undefined,
-            skupina: undefined,
-            kod: undefined,
-            nazov: undefined,
-            src_sql: undefined,
-            trg_sql: undefined,
+            group: undefined,
+            code: undefined,
+            name: undefined,
+            sourceSql: undefined,
+            targetSql: undefined,
             oond_sql: undefined,
-            popis: undefined,
+            description: undefined,
             src_par: undefined,
             trg_par: undefined
         };
@@ -38,7 +38,7 @@ angular.module('app')
         }
 
         function validate() {
-            return vm.test.akt.length && vm.test.nazov.length;
+            return vm.test.akt.length && vm.test.name.length;
         }
 
         function init() {

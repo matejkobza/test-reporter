@@ -13,25 +13,25 @@ public class Test extends EntityWithId {
     private int akt;
 
     @Column(name = "SKUPINA")
-    private String skupina;
+    private String group;
 
     @Column(name = "KOD")
-    private String kod;
+    private String code;
 
     @Column(name = "NAZOV")
-    private String nazov;
+    private String name;
 
     @Column(name = "SRC_SQL")
-    private String src_sql;
+    private String sourceSql;
 
     @Column(name = "TRG_SQL")
-    private String trg_sql;
+    private String targetSql;
 
     @Column(name = "COND")
     private String cond;
 
     @Column(name = "POPIS")
-    private String popis;
+    private String description;
 
     @ManyToOne
     private DataSource source;
@@ -48,44 +48,44 @@ public class Test extends EntityWithId {
         this.akt = akt;
     }
 
-    public String getSkupina() {
-        return skupina;
+    public String getGroup() {
+        return group;
     }
 
-    public void setSkupina(String skupina) {
-        this.skupina = skupina;
+    public void setGroup(String group) {
+        this.group = group;
     }
 
-    public String getKod() {
-        return kod;
+    public String getCode() {
+        return code;
     }
 
-    public void setKod(String kod) {
-        this.kod = kod;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getNazov() {
-        return nazov;
+    public String getName() {
+        return name;
     }
 
-    public void setNazov(String nazov) {
-        this.nazov = nazov;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSrc_sql() {
-        return src_sql;
+    public String getSourceSql() {
+        return sourceSql;
     }
 
-    public void setSrc_sql(String src_sql) {
-        this.src_sql = src_sql;
+    public void setSourceSql(String sourceSql) {
+        this.sourceSql = sourceSql;
     }
 
-    public String getTrg_sql() {
-        return trg_sql;
+    public String getTargetSql() {
+        return targetSql;
     }
 
-    public void setTrg_sql(String trg_sql) {
-        this.trg_sql = trg_sql;
+    public void setTargetSql(String targetSql) {
+        this.targetSql = targetSql;
     }
 
     public String getCond() {
@@ -96,11 +96,11 @@ public class Test extends EntityWithId {
         this.cond = cond;
     }
 
-    public String getPopis() {
-        return popis;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPopis(String popis) {
-        this.popis = popis;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
