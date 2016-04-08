@@ -12,19 +12,16 @@
     <input type="text" name="parametr" placeholder="POPIS" ng-model="newTestController.test.popis"/>
     <div class="row">
         <label for="src">Source</label>
-        <select  id="src" ng-model="newTestController.test">
-            <option>{{ newTestController.test }}</option>
-            <!--<option ng-repeat="test in newTestController.tests" >{{newTestController.test}}</option>-->
+        <select  id="src" ng-model="newTestController.test.src_par">
+            <option ng-repeat="dataSource in newTestController.dataSources" value="{{dataSource.id}}">{{dataSource.serverName}}</option>
         </select>
     </div>
     <div class="row">
         <label for="trg">Target</label>
-        <select id="trg" ng-model="newTestController.test">
-            <option ng-repeat="dataSource in newTestController.dataSources" value="{{dataSource.id}}">{{dataSource.host}}</option>
+        <select id="trg" ng-model="newTestController.test.trg_par">
+            <option ng-repeat="dataSource in newTestController.dataSources" value="{{dataSource.id}}">{{dataSource.serverName}}</option>
         </select>
     </div>
-    <!--<input type="text" name="parametr" placeholder="SRC_PAR" ng-model="newTestController.test.src_par"/> -->
-    <!--<input type="text" name="parametr" placeholder="TRG_PAR" ng-model="newTestController.test.trg_par"/> -->
     <input class="button" type="submit" value="back" ui-sref="tests"/>
     <input type="submit" value="send" ng-click="newTestController.send()"/>
 </div>
