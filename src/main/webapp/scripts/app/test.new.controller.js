@@ -29,8 +29,13 @@ angular.module('app')
          */
         function send() {
             if (validate()) {
+                service.findOneSettings(vm.test.src_par).then(function (response) {
+                    vm.test.src_par = response.data;
+                });
+                service.findOneSettings(vm.test.trg_par).then(function (response) {
+                    vm.test.trg_par = response.data;
+                });
                 service.save(vm.test).then(function (response) {
-
                     $state.go('tests');
                 });
             } else {
