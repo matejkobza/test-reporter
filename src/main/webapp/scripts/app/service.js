@@ -7,6 +7,7 @@ angular.module('app')
                 });
             },
             'save': function(test) {
+                console.debug("DEBUG: ", test);
                 return $http.post("/api/test/save", test).then(function(response) {
                     return response;
                 });

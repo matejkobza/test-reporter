@@ -30,6 +30,7 @@ angular.module('app')
         function send() {
             if (validate()) {
                 service.save(vm.test).then(function (response) {
+
                     $state.go('tests');
                 });
             } else {
