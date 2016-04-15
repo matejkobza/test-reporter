@@ -1,27 +1,31 @@
 <div id="form">
-    <input ng-required="true" type="text" ng-pattern="onlyNumbers" name="parametr" placeholder="AKT"
+    <input type="text" placeholder="AKT" ng-pattern="onlyNumbers" ng-required="true"
            ng-model="newTestController.test.akt"/>
-    <input type="text" name="parametr" placeholder="SKUPINA" ng-model="newTestController.test.group"/>
-    <input type="text" name="parametr" placeholder="KOD" ng-model="newTestController.test.code"/>
-    <input ng-required="true" type="text" name="parametr" placeholder="NAZOV" ng-model="newTestController.test.name"/>
+    <input type="text" placeholder="SKUPINA" ng-model="newTestController.test.group"/>
+    <input type="text" placeholder="KOD" ng-model="newTestController.test.code"/>
+    <input type="text" placeholder="NAZOV" ng-required="true" ng-model="newTestController.test.name"/>
+
     <textarea ui-codemirror ui-codemirror-opts="editorOptions" type="text" name="parametr" placeholder="SRC_SQL"
               ng-model="newTestController.test.sourceSql"></textarea>
     <textarea ui-codemirror ui-codemirror-opts="editorOptions" type="text" name="parametr" placeholder="TRG_SQL"
               ng-model="newTestController.test.targetSql"></textarea>
-    <input type="text" name="parametr" placeholder="OOND" ng-model="newTestController.test.oond"/>
-    <input type="text" name="parametr" placeholder="POPIS" ng-model="newTestController.test.description"/>
+    <input type="text" placeholder="Podmienka" ng-model="newTestController.test.cond"/>
+    <input type="text" placeholder="POPIS" ng-model="newTestController.test.description"/>
+
     <div class="row">
         <label for="src">Source</label>
-        <select  id="src" ng-model="newTestController.test.src_par">
+        <select id="src" ng-model="newTestController.test.sourceDataSourceId" convert-to-number>
             <option ng-repeat="dataSource in newTestController.dataSources" value="{{dataSource.id}}">{{dataSource.serverName}}</option>
         </select>
     </div>
+
     <div class="row">
         <label for="trg">Target</label>
-        <select id="trg" ng-model="newTestController.test.trg_par">
+        <select id="trg" ng-model="newTestController.test.targetDataSourceId" convert-to-number>
             <option ng-repeat="dataSource in newTestController.dataSources" value="{{dataSource.id}}">{{dataSource.serverName}}</option>
         </select>
     </div>
-    <input class="button" type="submit" value="back" ui-sref="tests"/>
+
+    <input type="button" value="back" ui-sref="tests" class="button"/>
     <input type="submit" value="send" ng-click="newTestController.send()"/>
 </div>

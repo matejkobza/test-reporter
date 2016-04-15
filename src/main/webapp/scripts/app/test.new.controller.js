@@ -13,10 +13,10 @@ angular.module('app')
             name: undefined,
             sourceSql: undefined,
             targetSql: undefined,
-            oond_sql: undefined,
+            cond: undefined,
             description: undefined,
-            src_par: undefined,
-            trg_par: undefined
+            sourceDataSourceId: undefined,
+            targetDataSourceId: undefined
         };
 
         vm.dataSources = undefined;
@@ -28,6 +28,7 @@ angular.module('app')
          * if valid then send data and store them
          */
         function send() {
+            console.debug(vm.test);
             if (validate()) {
                 service.save(vm.test).then(function (response) {
                     $state.go('tests');
