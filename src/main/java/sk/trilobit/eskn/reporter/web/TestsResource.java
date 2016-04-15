@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import sk.trilobit.eskn.reporter.Application;
+import sk.trilobit.eskn.reporter.entity.DataSource;
+import sk.trilobit.eskn.reporter.entity.EntityWithId;
 import sk.trilobit.eskn.reporter.entity.Test;
 import sk.trilobit.eskn.reporter.repository.TestRepository;
+import sk.trilobit.eskn.reporter.service.impl.DataSourceService;
 import sk.trilobit.eskn.reporter.web.dto.TestDTO;
 
 import javax.inject.Inject;
@@ -21,6 +24,12 @@ public class TestsResource {
 
 	@Inject
 	private TestRepository testRepository;
+
+    @Inject
+    private Test test;
+
+    @Inject
+    private DataSourceService dataSourceService;
 
     @Inject
     private MapperFacade mapperFacade;
@@ -38,6 +47,9 @@ public class TestsResource {
 	public
 	@ResponseBody
     List<TestDTO> saveTest(@RequestBody TestDTO testDTO) {
+        this.test.setSource((DataSource) dataSourceService.findOne(testDTO.getSourceDataSourceId()));
+        this.test.setTarget((DataSource) dataSourceService.findOne(testDTO.getTargetDataSourceId()));
+
         Test t = mapperFacade.map(testDTO, Test.class);
         this.testRepository.save(t);
         return findTest();

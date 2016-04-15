@@ -40,6 +40,22 @@ public class Test extends EntityWithId {
     private DataSource target;
 
 
+    public DataSource getSource() {
+        return source;
+    }
+
+    public void setSource(DataSource source) {
+        this.source = source;
+    }
+
+    public DataSource getTarget() {
+        return target;
+    }
+
+    public void setTarget(DataSource target) {
+        this.target = target;
+    }
+
     public int getAkt() {
         return akt;
     }
