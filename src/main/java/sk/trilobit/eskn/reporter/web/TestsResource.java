@@ -39,9 +39,8 @@ public class TestsResource {
 
 	@Transactional
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public
-	@ResponseBody
-    List<TestDTO> saveTest(@RequestBody TestDTO testDTO) {
+    @ResponseBody
+    public List<TestDTO> saveTest(@RequestBody TestDTO testDTO) {
         Test test = mapperFacade.map(testDTO, Test.class);
 
         test.setSource(dataSourceRepository.findOne(testDTO.getSourceDataSourceId()));
