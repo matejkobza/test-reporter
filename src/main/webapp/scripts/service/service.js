@@ -7,10 +7,14 @@ angular.module('app')
                 });
             },
             'save': function(test) {
-                console.debug("DEBUG: ", test);
                 return $http.post("/api/test/save", test).then(function(response) {
                     return response;
                 });
+            },
+            'run': function (testId) {
+                return $http.post("/api/test/run", testId).then(function (response) {
+                    return response;
+                })
             },
             'saveSettings': function(settings) {
                 return $http.post("/api/settings/save", settings).then(function(response) {

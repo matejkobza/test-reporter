@@ -5,8 +5,7 @@ angular.module('app')
 
         var vm = this;
         vm.deleteSetting = deleteSetting;
-        vm.updateSetting = updateSetting;
-        vm.findOneSetting = findOneSetting;
+        vm.goToUpdateSetting = goToUpdateSetting;
         vm.settings = [];
 
         function deleteSetting(subjects) {
@@ -15,14 +14,8 @@ angular.module('app')
             });
         }
 
-        function updateSetting() {
-            service.updateSettings(vm.settings).then(function (response) {
-                $state.go('settings');
-            });
-        }
-
-        function findOneSetting(subject) {
-            $state.go('settings.update', {id: subject});
+        function goToUpdateSetting(settingId) {
+            $state.go('settings.update', {id: settingId});
         }
 
         function init() {

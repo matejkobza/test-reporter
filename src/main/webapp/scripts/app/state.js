@@ -17,7 +17,7 @@ angular.module('app')
             })
             .state('tests.new', {
                 parent: 'tests',
-                url: 'new',
+                url: 'new/:id',
                 views: {
                     'content@': {
                         templateUrl: 'html/tests.new.html',

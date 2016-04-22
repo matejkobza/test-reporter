@@ -7,38 +7,25 @@
 <input type="button" ui-sref="tests.new" value="Pridať test"/>
 
 <div id="table">
-    <table ng-show="tab == 1">
+    <table>
         <thead>
         <tr>
             <th>ID</th>
             <th>Názov</th>
             <th>Výsledok</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="test in testController.tests">
             <td>{{ test.id }}</td>
             <td>{{ test.name }}</td>
-            <td><a href="javascript:void(0);" ng-click="">Spustiť</a></td>
-        </tr>
-        </tbody>
-    </table>
-
-    <table ng-show="tab == 2" ng-class="{active: tab == 2}">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Názov</th>
-            <th>Výsledok</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="subjects in tabTesty.subjects">
-            <th>{{ $index + 1 }}</th>
-            <th>{{ subjects.Name }}</th>
-            <th>{{ subjects.Cell }}
-                <input type="checkbox" name="first" ng-checked="tabTesty.subjects.indexOf(subjects) != -1"
-                       ng-change="toggleAddSubject(subjects)"/></th>
+            <td>{{ test.lastResult }}</td>
+            <td>
+                <a href="javascript:void(0);" ng-click="testController.runTest(test.id)">Spustiť</a>
+                <a href="javascript:void(0);" ng-click="testController.goToUpdate(test.id)">Upraviť</a>
+                <a href="javascript:void(0);" ng-click="testController.delete(test.id)">Odstrániť</a>
+            </td>
         </tr>
         </tbody>
     </table>

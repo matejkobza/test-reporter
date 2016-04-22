@@ -3,12 +3,13 @@
 <div class="row">
     <label for="type">Databáza</label>
     <select id="type" ng-model="newSettingController.setting.driverClassName">
-        <option>Oracle</option>
-        <option>MySQL</option>
+        <option value="oracle.jdbc.OracleDriver">Oracle</option>
+        <option value="com.mysql.jdbc.Driver">MySQL</option>
+        <option value="org.postgresql.Driver">PostgreSQL</option>
     </select>
 </div>
 <div class="row">
-    <label for="serverName">Názov servera</label>
+    <label for="serverName">Server</label>
     <input id="serverName" type="text" placeholder="" ng-model="newSettingController.setting.serverName"/>
 </div>
 <div class="row">
@@ -28,5 +29,5 @@
     <input id="password" type="password" placeholder="" ng-model="newSettingController.setting.password"/>
 </div>
 <br />
-<input type="submit" ui-sref="settings" value="Back"/>
-<input type="submit" value="Save" ng-click="newSettingController.send()"/>
+<input type="submit" ui-sref="settings" value="Späť"/>
+<input type="submit" value="Uložiť" ng-click="newSettingController.saveOrUpdate()"/>

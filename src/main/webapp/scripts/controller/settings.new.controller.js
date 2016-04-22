@@ -7,6 +7,7 @@ angular.module('app')
         $scope.onlyNumbers = /^[0-9]+$/;
 
         vm.setting = {
+            id: undefined,
             driverClassName: undefined,
             serverName: undefined,
             portNumber: undefined,
@@ -14,18 +15,14 @@ angular.module('app')
             user: undefined,
             password: undefined
         };
-        vm.send = send;
-
-
+        vm.saveOrUpdate = saveOrUpdate;
 
         // sends data to server
-        function send() {
+        function saveOrUpdate() {
             service.saveSettings(vm.setting).then(function (response) {
                 $state.go('settings');
             });
         }
-
-
 
         return vm;
 
