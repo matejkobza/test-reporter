@@ -10,6 +10,9 @@ import sk.trilobit.eskn.reporter.repository.TestRepository;
 import sk.trilobit.eskn.reporter.service.ITestService;
 
 import javax.inject.Inject;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,17 +29,35 @@ public class TestService implements ITestService {
     @Inject
     private RunRepository runRepository;
 
-    public boolean runTest(Long testId) {
+    public boolean runTest(Long testId) throws SQLException {
         Test test = testRepository.findOne(testId);
 
         DataSource source = test.getSource();
         DataSource target = test.getTarget();
 
         Run run = new Run();
+        Thread thread = new Thread();
 
 
         // create connection to source and target and then execute test in separate thread
         // after run finishes then record values into Run and store to database
+
+        String URLsource = "jdbc:mysql://localhost:3306/testreported";
+        String USERsource = source.getUser();
+        String PASSsource = source.getPassword();
+        Connection connsource = DriverManager.getConnection(URLsource,USERsource,PASSsource);
+
+        String URLtarget = "jdbc:mysql://localhost:3306/testreported";
+        String USERtarget = target.getUser();
+        String PASStarget = target.getPassword();
+        Connection conntarget = DriverManager.getConnection(URLtarget,USERtarget,PASStarget);
+
+
+        thread.start();
+
+
+        //connsource.close();
+        //conntarget.close();
 
         throw new NotYetImplementedException("runTest");
     }
