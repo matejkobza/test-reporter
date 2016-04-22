@@ -42,12 +42,14 @@ public class TestService implements ITestService {
         // create connection to source and target and then execute test in separate thread
         // after run finishes then record values into Run and store to database
 
-        String URLsource = "jdbc:mysql://localhost:3306/testreported";
+        String URLsource = "jdbc:" + source.getDriverClassName() + "://" + source.getServerName() +
+                            ":" + source.getPortNumber() + "/" + source.getDatabaseName();
         String USERsource = source.getUser();
         String PASSsource = source.getPassword();
         Connection connsource = DriverManager.getConnection(URLsource,USERsource,PASSsource);
 
-        String URLtarget = "jdbc:mysql://localhost:3306/testreported";
+        String URLtarget = "jdbc:" + target.getDriverClassName() + "://" + target.getServerName() +
+                            ":" + target.getPortNumber() + "/" + target.getDatabaseName();
         String USERtarget = target.getUser();
         String PASStarget = target.getPassword();
         Connection conntarget = DriverManager.getConnection(URLtarget,USERtarget,PASStarget);
