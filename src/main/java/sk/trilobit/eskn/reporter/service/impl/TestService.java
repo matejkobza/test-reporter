@@ -45,12 +45,12 @@ public class TestService implements ITestService {
         // after run finishes then record values into Run and store to database
 
         Connection sourceConn = DriverManager.getConnection(
-                connection(source),
+                this.getConnectionString(source),
                 source.getUser(),
                 source.getPassword());
 
         Connection targetConn = DriverManager.getConnection(
-                connection(target),
+                this.getConnectionString(target),
                 target.getUser(),
                 target.getPassword());
 
@@ -68,7 +68,7 @@ public class TestService implements ITestService {
         throw new NotYetImplementedException("runTest");
     }
 
-    public String connection(DataSource dataSource)
+    private String getConnectionString(DataSource dataSource)
     {
         StringBuffer connectionString = new StringBuffer();
 
