@@ -1,5 +1,6 @@
 package sk.trilobit.eskn.reporter.service.impl;
 
+import lombok.ToString;
 import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.stereotype.Service;
 import sk.trilobit.eskn.reporter.entity.DataSource;
@@ -37,50 +38,67 @@ public class TestService implements ITestService {
 
         Run run = new Run();
         Thread thread = new Thread();
+        StringBuffer URLsource = new StringBuffer();
+        StringBuffer URLtarget = new StringBuffer();
 
 
         // create connection to source and target and then execute test in separate thread
         // after run finishes then record values into Run and store to database
 
-        if(source.getDriverClassName() == "com.mysql.jdbc.Driver")
+        if(source.getDriverClassName().equals( "com.mysql.jdbc.Driver" ))
         {
-            String URLsource = "jdbc:mysql://" + source.getServerName() +
-                    ":" + source.getPortNumber() + "/" + source.getDatabaseName();
-            String USERsource = source.getUser();
-            String PASSsource = source.getPassword();
-            Connection connsource = DriverManager.getConnection(URLsource,USERsource,PASSsource);
-        }
-
-        if(source.getDriverClassName() == "oracle.jdbc.OracleDriver")
-        {
-            String URLsource = "jdbc:oracle:thin:@" + source.getServerName() +
-                    ":" + source.getPortNumber() + ":" + source.getDatabaseName();
-            String USERsource = source.getUser();
-            String PASSsource = source.getPassword();
-            Connection connsource = DriverManager.getConnection(URLsource,USERsource,PASSsource);
+            URLsource.append("jdbc:mysql://");
+            URLsource.append(source.getServerName());
+            URLsource.append(":");
+            URLsource.append(source.getPortNumber());
+            URLsource.append("/");
+            URLsource.append(source.getDatabaseName());
         }
 
 
-        if(target.getDriverClassName() == "MySQL")
+        if(source.getDriverClassName().equals( "oracle.jdbc.OracleDriver" ))
         {
-            String URLtarget = "jdbc:mysql://" + target.getServerName() +
-                    ":" + target.getPortNumber() + "/" + target.getDatabaseName();
-            String USERtarget = target.getUser();
-            String PASStarget = target.getPassword();
-            Connection conntarget = DriverManager.getConnection(URLtarget,USERtarget,PASStarget);
+            URLsource.append("jdbc:oracle:thin:@");
+            URLsource.append(source.getServerName());
+            URLsource.append(":");
+            URLsource.append(source.getPortNumber());
+            URLsource.append(":");
+            URLsource.append(source.getDatabaseName());
         }
 
-        if(target.getDriverClassName() == "Oracle")
+        String USERsource = source.getUser();
+        String PASSsource = source.getPassword();
+        Connection connsource = DriverManager.getConnection(URLsource.toString(),USERsource,PASSsource);
+
+
+        if(source.getDriverClassName().equals( "com.mysql.jdbc.Driver" ))
         {
-            String URLtarget = "jdbc:mysql://" + target.getServerName() +
-                    ":" + target.getPortNumber() + "/" + target.getDatabaseName();
-            String USERtarget = target.getUser();
-            String PASStarget = target.getPassword();
-            Connection conntarget = DriverManager.getConnection(URLtarget,USERtarget,PASStarget);
+            URLtarget.append("jdbc:mysql://");
+            URLtarget.append(source.getServerName());
+            URLtarget.append(":");
+            URLtarget.append(source.getPortNumber());
+            URLtarget.append("/");
+            URLtarget.append(source.getDatabaseName());
         }
 
+        if(source.getDriverClassName().equals( "oracle.jdbc.OracleDriver" ))
+        {
+            URLtarget.append("jdbc:oracle:thin:@");
+            URLtarget.append(source.getServerName());
+            URLtarget.append(":");
+            URLtarget.append(source.getPortNumber());
+            URLtarget.append(":");
+            URLtarget.append(source.getDatabaseName());
+        }
 
-        thread.start();
+        String USERtarget = target.getUser();
+        String PASStarget = target.getPassword();
+        Connection conntarget = DriverManager.getConnection(URLtarget.toString(),USERtarget,PASStarget);
+
+
+
+
+        //thread.start();
 
 
         //connsource.close();
@@ -88,5 +106,6 @@ public class TestService implements ITestService {
 
         throw new NotYetImplementedException("runTest");
     }
+
 
 }
