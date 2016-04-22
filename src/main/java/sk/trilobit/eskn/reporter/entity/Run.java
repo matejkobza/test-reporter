@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
  * Created by doloi72 on 18.12.2015.
@@ -33,6 +33,12 @@ public class Run extends EntityWithId {
     private String error;
 
     @Column(name = "CAS")
-    private Time cas;
+    private Timestamp cas;
+
+    @Column(name = "START")
+    private Timestamp start;
+
+    @Column(name = "END")
+    private Timestamp end;
 
 }
