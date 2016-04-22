@@ -38,43 +38,22 @@ public class TestService implements ITestService {
 
         Run run = new Run();
         Thread thread = new Thread();
-        StringBuffer sourceConnectionString = new StringBuffer();
-        StringBuffer targetConnectionString = new StringBuffer();
+
 
 
         // create connection to source and target and then execute test in separate thread
         // after run finishes then record values into Run and store to database
 
-        if (source.getDriverClassName().equals("com.mysql.jdbc.Driver")) {
-            sourceConnectionString.append("jdbc:mysql://")
-                    .append(source.getServerName())
-                    .append(":")
-                    .append(source.getPortNumber())
-                    .append("/")
-                    .append(source.getDatabaseName());
-        }
-
-
-        if (source.getDriverClassName().equals("oracle.jdbc.OracleDriver")) {
-            sourceConnectionString.append("jdbc:oracle:thin:@")
-                    .append(source.getServerName())
-                    .append(":")
-                    .append(source.getPortNumber())
-                    .append(":")
-                    .append(source.getDatabaseName());
-        }
-
         Connection sourceConn = DriverManager.getConnection(
-                sourceConnectionString.toString(),
+                connection(source),
                 source.getUser(),
                 source.getPassword());
 
         Connection targetConn = DriverManager.getConnection(
-                targetConnectionString.toString(),
+                connection(target),
                 target.getUser(),
                 target.getPassword());
 
-        //thread.start();
 
 
         run.setCas(new Timestamp(System.currentTimeMillis()));
@@ -87,6 +66,32 @@ public class TestService implements ITestService {
         targetConn.close();
 
         throw new NotYetImplementedException("runTest");
+    }
+
+    public String connection(DataSource dataSource)
+    {
+        StringBuffer connectionString = new StringBuffer();
+
+        if (dataSource.getDriverClassName().equals("com.mysql.jdbc.Driver")) {
+            connectionString.append("jdbc:mysql://")
+                    .append(dataSource.getServerName())
+                    .append(":")
+                    .append(dataSource.getPortNumber())
+                    .append("/")
+                    .append(dataSource.getDatabaseName());
+        }
+
+
+        if (dataSource.getDriverClassName().equals("oracle.jdbc.OracleDriver")) {
+            connectionString.append("jdbc:oracle:thin:@")
+                    .append(dataSource.getServerName())
+                    .append(":")
+                    .append(dataSource.getPortNumber())
+                    .append(":")
+                    .append(dataSource.getDatabaseName());
+        }
+
+        return connectionString.toString();
     }
 
 
