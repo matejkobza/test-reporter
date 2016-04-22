@@ -1,16 +1,18 @@
 package sk.trilobit.eskn.reporter.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Time;
 
 /**
  * Created by doloi72 on 18.12.2015.
  */
+@Getter
+@Setter
 @Entity
 @Table(name = "TESTY_RUNS")
 public class Run extends EntityWithId {
