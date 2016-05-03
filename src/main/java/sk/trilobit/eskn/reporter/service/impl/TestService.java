@@ -10,10 +10,7 @@ import sk.trilobit.eskn.reporter.repository.TestRepository;
 import sk.trilobit.eskn.reporter.service.ITestService;
 
 import javax.inject.Inject;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -37,7 +34,7 @@ public class TestService implements ITestService {
         DataSource target = test.getTarget();
 
         Run run = new Run();
-        Thread thread = new Thread();
+//        Thread thread = new Thread();
 
 
 
@@ -60,7 +57,15 @@ public class TestService implements ITestService {
         run.setStart(new Timestamp(System.currentTimeMillis()));
 
         // thread start
+        Statement statement = sourceConn.createStatement(); // create statement
+        ResultSet rs = statement.executeQuery(test.getSourceSql()); // execute query and get resultset from database
+        Object result = rs.getObject(0); // here we dont know what came back from DB so we cant use anything else than object
 
+        // do the same for target
+
+        // compare results
+
+        // record comparison to Run
 
         sourceConn.close();
         targetConn.close();
