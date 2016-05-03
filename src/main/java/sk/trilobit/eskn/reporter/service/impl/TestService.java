@@ -1,6 +1,6 @@
 package sk.trilobit.eskn.reporter.service.impl;
 
-import com.sun.org.apache.xpath.internal.operations.Equals;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.cfg.NotYetImplementedException;
 import org.hibernate.dialect.function.ConditionalParenthesisFunction;
 import org.springframework.stereotype.Service;
@@ -21,6 +21,7 @@ import java.sql.*;
  * Time: 12:48
  */
 @Service
+@Slf4j
 public class TestService implements ITestService {
 
     @Inject
@@ -29,7 +30,7 @@ public class TestService implements ITestService {
     @Inject
     private RunRepository runRepository;
 
-    public boolean runTest(Long testId) throws SQLException {
+    public boolean runTest(Long testId) {
         Test test = testRepository.findOne(testId);
 
         DataSource source = test.getSource();
@@ -43,41 +44,43 @@ public class TestService implements ITestService {
         // create connection to source and target and then execute test in separate thread
         // after run finishes then record values into Run and store to database
 
-        Connection sourceConn = DriverManager.getConnection(
-                this.getConnectionString(source),
-                source.getUser(),
-                source.getPassword());
+        try {
+            Connection sourceConn = DriverManager.getConnection(
+                    this.getConnectionString(source),
+                    source.getUser(),
+                    source.getPassword());
 
-        Connection targetConn = DriverManager.getConnection(
-                this.getConnectionString(target),
-                target.getUser(),
-                target.getPassword());
-
-
-
-        run.setCas(new Timestamp(System.currentTimeMillis()));
-        run.setStart(new Timestamp(System.currentTimeMillis()));
-
-        // thread start
-        Statement statementSource = sourceConn.createStatement(); // create statement
-        ResultSet rsSource = statementSource.executeQuery(test.getSourceSql()); // execute query and get resultset from database
-        Object resultSource = rsSource.getObject(0); // here we dont know what came back from DB so we cant use anything else than object
-
-        // do the same for target
-        Statement statementTarget = targetConn.createStatement();
-        ResultSet rsTarget = statementTarget.executeQuery(test.getTargetSql());
-        Object resultTarget = rsTarget.getObject(0);
+            Connection targetConn = DriverManager.getConnection(
+                    this.getConnectionString(target),
+                    target.getUser(),
+                    target.getPassword());
 
 
-        // compare results
-        if(resultSource.equals(resultTarget)); //skusobne len
+            run.setCas(new Timestamp(System.currentTimeMillis()));
+            run.setStart(new Timestamp(System.currentTimeMillis()));
+
+            // thread start
+            Statement statementSource = sourceConn.createStatement(); // create statement
+            ResultSet rsSource = statementSource.executeQuery(test.getSourceSql()); // execute query and get resultset from database
+            Object resultSource = rsSource.getObject(0); // here we dont know what came back from DB so we cant use anything else than object
+
+            // do the same for target
+            Statement statementTarget = targetConn.createStatement();
+            ResultSet rsTarget = statementTarget.executeQuery(test.getTargetSql());
+            Object resultTarget = rsTarget.getObject(0);
 
 
+            // compare results
+            if (resultSource.equals(resultTarget)) ; //skusobne len
 
-        // record comparison to Run
+
+            // record comparison to Run
 
             sourceConn.close();
-        targetConn.close();
+            targetConn.close();
+        } catch (SQLException ex) {
+            log.error("Unable to perform test run", ex);
+        }
 
         throw new NotYetImplementedException("runTest");
     }
