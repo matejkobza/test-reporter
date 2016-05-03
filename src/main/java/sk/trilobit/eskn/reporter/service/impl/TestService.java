@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.cfg.NotYetImplementedException;
 import org.hibernate.dialect.function.ConditionalParenthesisFunction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import sk.trilobit.eskn.reporter.entity.DataSource;
 import sk.trilobit.eskn.reporter.entity.Run;
 import sk.trilobit.eskn.reporter.entity.Test;
@@ -30,6 +31,7 @@ public class TestService implements ITestService {
     @Inject
     private RunRepository runRepository;
 
+    @Transactional
     public boolean runTest(Long testId) {
         Test test = testRepository.findOne(testId);
 
@@ -62,12 +64,14 @@ public class TestService implements ITestService {
             // thread start
             Statement statementSource = sourceConn.createStatement(); // create statement
             ResultSet rsSource = statementSource.executeQuery(test.getSourceSql()); // execute query and get resultset from database
-            Object resultSource = rsSource.getObject(0); // here we dont know what came back from DB so we cant use anything else than object
+            rsSource.next();// move cursor to first object
+            Object resultSource = rsSource.getObject(1); // here we dont know what came back from DB so we cant use anything else than object
 
             // do the same for target
             Statement statementTarget = targetConn.createStatement();
             ResultSet rsTarget = statementTarget.executeQuery(test.getTargetSql());
-            Object resultTarget = rsTarget.getObject(0);
+            rsTarget.next();
+            Object resultTarget = rsTarget.getObject(1);
 
 
             // compare results
