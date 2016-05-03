@@ -1,5 +1,6 @@
 package sk.trilobit.eskn.reporter.service.impl;
 
+import com.sun.org.apache.xpath.internal.operations.Equals;
 import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.stereotype.Service;
 import sk.trilobit.eskn.reporter.entity.DataSource;
@@ -34,7 +35,7 @@ public class TestService implements ITestService {
         DataSource target = test.getTarget();
 
         Run run = new Run();
-//        Thread thread = new Thread();
+        Thread thread = new Thread();
 
 
 
@@ -57,13 +58,18 @@ public class TestService implements ITestService {
         run.setStart(new Timestamp(System.currentTimeMillis()));
 
         // thread start
-        Statement statement = sourceConn.createStatement(); // create statement
-        ResultSet rs = statement.executeQuery(test.getSourceSql()); // execute query and get resultset from database
-        Object result = rs.getObject(0); // here we dont know what came back from DB so we cant use anything else than object
+        Statement statementSource = sourceConn.createStatement(); // create statement
+        ResultSet rsSource = statementSource.executeQuery(test.getSourceSql()); // execute query and get resultset from database
+        Object resultSource = rsSource.getObject(0); // here we dont know what came back from DB so we cant use anything else than object
 
         // do the same for target
+        Statement statementTarget = targetConn.createStatement();
+        ResultSet rsTarget = statementTarget.executeQuery(test.getSourceSql());
+        Object resultTarget = rsTarget.getObject(0);
+
 
         // compare results
+
 
         // record comparison to Run
 
@@ -81,6 +87,7 @@ public class TestService implements ITestService {
             connectionString.append("jdbc:mysql://")
                     .append(dataSource.getServerName())
                     .append(":")
+
                     .append(dataSource.getPortNumber())
                     .append("/")
                     .append(dataSource.getDatabaseName());
