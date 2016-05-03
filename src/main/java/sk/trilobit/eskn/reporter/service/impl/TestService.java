@@ -80,6 +80,7 @@ public class TestService implements ITestService {
             targetConn.close();
         } catch (SQLException ex) {
             log.error("Unable to perform test run", ex);
+            return false;
         }
 
         return true;
