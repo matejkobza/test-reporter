@@ -2,6 +2,7 @@ package sk.trilobit.eskn.reporter.service.impl;
 
 import com.sun.org.apache.xpath.internal.operations.Equals;
 import org.hibernate.cfg.NotYetImplementedException;
+import org.hibernate.dialect.function.ConditionalParenthesisFunction;
 import org.springframework.stereotype.Service;
 import sk.trilobit.eskn.reporter.entity.DataSource;
 import sk.trilobit.eskn.reporter.entity.Run;
@@ -64,16 +65,18 @@ public class TestService implements ITestService {
 
         // do the same for target
         Statement statementTarget = targetConn.createStatement();
-        ResultSet rsTarget = statementTarget.executeQuery(test.getSourceSql());
+        ResultSet rsTarget = statementTarget.executeQuery(test.getTargetSql());
         Object resultTarget = rsTarget.getObject(0);
 
 
         // compare results
+        if(resultSource.equals(resultTarget)); //skusobne len
+
 
 
         // record comparison to Run
 
-        sourceConn.close();
+            sourceConn.close();
         targetConn.close();
 
         throw new NotYetImplementedException("runTest");
