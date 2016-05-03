@@ -2,16 +2,12 @@ package sk.trilobit.eskn.reporter.web;
 
 import ma.glasnost.orika.MapperFacade;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sk.trilobit.eskn.reporter.Application;
 import sk.trilobit.eskn.reporter.entity.Test;
 import sk.trilobit.eskn.reporter.repository.DataSourceRepository;
 import sk.trilobit.eskn.reporter.repository.TestRepository;
-import sk.trilobit.eskn.reporter.service.impl.TestService;
+import sk.trilobit.eskn.reporter.service.ITestService;
 import sk.trilobit.eskn.reporter.web.dto.TestDTO;
 
 import javax.inject.Inject;
@@ -28,7 +24,7 @@ public class TestResource {
     private DataSourceRepository dataSourceRepository;
 
     @Inject
-    private TestService testService;
+    private ITestService testService;
 
     @Inject
     private MapperFacade mapperFacade;

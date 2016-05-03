@@ -1,7 +1,5 @@
 package sk.trilobit.eskn.reporter.service;
 
-import java.sql.SQLException;
-
 /**
  * Created with IntelliJ IDEA.
  * User: matejkobza
@@ -15,5 +13,5 @@ public interface ITestService {
      * @param testId
      * @return
      */
-    boolean runTest(Long testId) throws SQLException;
+    boolean runTest(Long testId);
 }
