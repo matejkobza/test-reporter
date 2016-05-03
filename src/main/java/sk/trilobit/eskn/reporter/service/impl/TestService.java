@@ -82,7 +82,8 @@ public class TestService implements ITestService {
             log.error("Unable to perform test run", ex);
         }
 
-        throw new NotYetImplementedException("runTest");
+        return true;
+//        throw new NotYetImplementedException("runTest");
     }
 
     private String getConnectionString(DataSource dataSource)
