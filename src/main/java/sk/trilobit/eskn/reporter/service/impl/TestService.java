@@ -75,8 +75,36 @@ public class TestService implements ITestService {
 
 
             // compare results
-            if (resultSource.equals(resultTarget)) ; //skusobne len
-
+            if (resultSource.getClass() == Integer.class && resultTarget.getClass() == Integer.class) {
+                if(resultSource == resultTarget)
+                {
+                    //spravne
+                }
+                else
+                {
+                    //nespravne
+                }
+            }
+            else if (resultSource.getClass() == String.class && resultTarget.getClass() == String.class) {
+                if(resultSource.equals(resultTarget))
+                {
+                    //spravne
+                }
+                else
+                {
+                    //nespravne
+                }
+            }
+            else if (resultSource.getClass() == Float.class && resultTarget.getClass() == Float.class) {
+                if(resultSource == resultTarget)
+                {
+                    //spravne
+                }
+                else
+                {
+                    //nespravne
+                }
+            }
 
             // record comparison to Run
 
