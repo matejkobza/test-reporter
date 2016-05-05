@@ -1,8 +1,6 @@
 package sk.trilobit.eskn.reporter.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.cfg.NotYetImplementedException;
-import org.hibernate.dialect.function.ConditionalParenthesisFunction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sk.trilobit.eskn.reporter.entity.DataSource;
@@ -13,7 +11,12 @@ import sk.trilobit.eskn.reporter.repository.TestRepository;
 import sk.trilobit.eskn.reporter.service.ITestService;
 
 import javax.inject.Inject;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 
 /**
  * Created with IntelliJ IDEA.
@@ -75,36 +78,41 @@ public class TestService implements ITestService {
 
 
             // compare results
-            if (resultSource.getClass() == Integer.class && resultTarget.getClass() == Integer.class) {
-                if(resultSource == resultTarget)
-                {
-                    //spravne
-                }
-                else
-                {
-                    //nespravne
-                }
+            if (resultSource instanceof Integer && resultTarget instanceof Integer) {
+                Integer src = (Integer) resultSource;
+                Integer trg = (Integer) resultTarget;
             }
-            else if (resultSource.getClass() == String.class && resultTarget.getClass() == String.class) {
-                if(resultSource.equals(resultTarget))
-                {
-                    //spravne
-                }
-                else
-                {
-                    //nespravne
-                }
-            }
-            else if (resultSource.getClass() == Float.class && resultTarget.getClass() == Float.class) {
-                if(resultSource == resultTarget)
-                {
-                    //spravne
-                }
-                else
-                {
-                    //nespravne
-                }
-            }
+
+//            if (resultSource.getClass() == Integer.class && resultTarget.getClass() == Integer.class) {
+//                if(resultSource == resultTarget)
+//                {
+//                    //spravne
+//                }
+//                else
+//                {
+//                    //nespravne
+//                }
+//            }
+//            else if (resultSource.getClass() == String.class && resultTarget.getClass() == String.class) {
+//                if(resultSource.equals(resultTarget))
+//                {
+//                    //spravne
+//                }
+//                else
+//                {
+//                    //nespravne
+//                }
+//            }
+//            else if (resultSource.getClass() == Float.class && resultTarget.getClass() == Float.class) {
+//                if(resultSource == resultTarget)
+//                {
+//                    //spravne
+//                }
+//                else
+//                {
+//                    //nespravne
+//                }
+//            }
 
             // record comparison to Run
 
