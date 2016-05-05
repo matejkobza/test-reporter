@@ -45,10 +45,10 @@ public class TestService implements ITestService {
         Thread thread = new Thread();
 
 
-
         // create connection to source and target and then execute test in separate thread
         // after run finishes then record values into Run and store to database
 
+        Boolean result = false;
         try {
             Connection sourceConn = DriverManager.getConnection(
                     this.getConnectionString(source),
@@ -76,55 +76,15 @@ public class TestService implements ITestService {
             rsTarget.next();
             Object resultTarget = rsTarget.getObject(1);
 
-
-            // compare results
-            if (resultSource instanceof Integer && resultTarget instanceof Integer) {
-                Integer src = (Integer) resultSource;
-                Integer trg = (Integer) resultTarget;
-            }
-
-//            if (resultSource.getClass() == Integer.class && resultTarget.getClass() == Integer.class) {
-//                if(resultSource == resultTarget)
-//                {
-//                    //spravne
-//                }
-//                else
-//                {
-//                    //nespravne
-//                }
-//            }
-//            else if (resultSource.getClass() == String.class && resultTarget.getClass() == String.class) {
-//                if(resultSource.equals(resultTarget))
-//                {
-//                    //spravne
-//                }
-//                else
-//                {
-//                    //nespravne
-//                }
-//            }
-//            else if (resultSource.getClass() == Float.class && resultTarget.getClass() == Float.class) {
-//                if(resultSource == resultTarget)
-//                {
-//                    //spravne
-//                }
-//                else
-//                {
-//                    //nespravne
-//                }
-//            }
-
-            // record comparison to Run
+            result = cond(resultSource, resultTarget, test.getCond());
 
             sourceConn.close();
             targetConn.close();
         } catch (SQLException ex) {
             log.error("Unable to perform test run", ex);
-            return false;
+        } finally {
+            return result;
         }
-
-        return true;
-//        throw new NotYetImplementedException("runTest");
     }
 
     private String getConnectionString(DataSource dataSource)
@@ -152,6 +112,15 @@ public class TestService implements ITestService {
         }
 
         return connectionString.toString();
+    }
+
+    private Boolean cond(Object source, Object target, String compareSign) {
+        // here compares the result with library provided in chat
+        String expression = source + " " + compareSign + " " + target;
+
+        // use it here and return result overloaded with Boolean
+
+        return expression.isEmpty();
     }
 
 
