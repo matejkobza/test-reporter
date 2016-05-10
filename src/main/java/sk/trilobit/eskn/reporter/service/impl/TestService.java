@@ -127,13 +127,12 @@ public class TestService implements ITestService {
 
         // Create a context and add data
         JexlContext jc = new MapContext();
-        jc.set("foo", new Object() );
 
         // Now evaluate the expression, getting the result
         Object o = e.evaluate(jc);
         // use it here and return result overloaded with Boolean
 
-        return expression.isEmpty();
+        return (boolean)o;
     }
 
 
