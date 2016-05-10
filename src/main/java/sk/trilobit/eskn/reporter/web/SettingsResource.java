@@ -39,8 +39,8 @@ public class SettingsResource {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public void update(@RequestBody DataSource dataSource) {this.dataSourceService.update(dataSource);}
 
-    @RequestMapping(value = "/findOne", method = RequestMethod.GET)
-    public DataSource findOne(@RequestParam(name = "setting", required = true) Long setting) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public DataSource findOne(@PathVariable("id") Long setting) {
        return (DataSource) this.dataSourceService.findOne(setting);
     }
 

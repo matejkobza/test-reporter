@@ -16,7 +16,7 @@ angular.module('app')
             password: undefined
         };
         vm.update = update;
-
+        init();
 
         function update() {
             service.updateSettings(vm.setting).then(function (response) {
@@ -29,8 +29,6 @@ angular.module('app')
                 vm.setting = response.data;
             });
         }
-
-        init();
 
         return vm;
     });

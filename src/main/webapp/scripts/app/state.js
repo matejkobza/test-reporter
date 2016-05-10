@@ -57,7 +57,7 @@ angular.module('app')
                 url: '/update/:id',
                 views: {
                     'content@': {
-                        templateUrl: 'html/settings.update.html',
+                        templateUrl: 'html/settings.new.html',
                         controller: 'UpdateSettingController as updateSettingController'
                     }
                 }

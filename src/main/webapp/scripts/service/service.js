@@ -36,11 +36,8 @@ angular.module('app')
                     return response;
                 });
             },
-            'findOneSettings': function(setting) {
-                return $http.get("/api/settings/findOne", {
-                    params: {
-                    setting: setting
-                }}).then(function (response) {
+            'findOneSettings': function(settingId) {
+                return $http.get("/api/settings/" + settingId).then(function (response) {
                     return response;
                 });
             }

@@ -1,6 +1,10 @@
 package sk.trilobit.eskn.reporter.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.jexl3.JexlBuilder;
+import org.apache.commons.jexl3.JexlEngine;
+import org.apache.commons.jexl3.JexlExpression;
+import org.apache.commons.jexl3.MapContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sk.trilobit.eskn.reporter.entity.DataSource;
@@ -9,14 +13,10 @@ import sk.trilobit.eskn.reporter.entity.Test;
 import sk.trilobit.eskn.reporter.repository.RunRepository;
 import sk.trilobit.eskn.reporter.repository.TestRepository;
 import sk.trilobit.eskn.reporter.service.ITestService;
+import sun.jvm.hotspot.types.WrongTypeException;
 
 import javax.inject.Inject;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
+import java.sql.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -118,9 +118,22 @@ public class TestService implements ITestService {
         // here compares the result with library provided in chat
         String expression = source + " " + compareSign + " " + target;
 
-        // use it here and return result overloaded with Boolean
+        // Create or retrieve an engine
+        JexlEngine jexl = new JexlBuilder().create();
 
-        return expression.isEmpty();
+        // Create an expression
+        JexlExpression e = jexl.createExpression(expression);
+
+        // Create a context and add data
+
+        // Now evaluate the expression, getting the result
+        Object o = e.evaluate(new MapContext());
+        // use it here and return result overloaded with Boolean
+        if (o instanceof Boolean) {
+            return expression.isEmpty();
+        } else {
+            throw new WrongTypeException(o.toString());
+        }
     }
 
 
