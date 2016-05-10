@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .controller('NewTestController', function ($scope, service, $state) {
+    .controller('NewTestController', function ($scope, service, $state, $stateParams) {
 
         var vm = this;
         $scope.onlyNumbers = /^[0-9]+$/;
@@ -46,6 +46,14 @@ angular.module('app')
             service.loadSettings().then(function (response) {
                 vm.dataSources = response.data;
 
+                if ($stateParams.id) {
+                    service.findTest($stateParams.id).then(function (response) {
+                        vm.test = response.data;
+                        vm.test.sourceDataSourceId = response.data.source.id;
+                        vm.test.targetDataSourceId = response.data.target.id;
+                        vm.test.akt += "";
+                    })
+                }
             });
         }
 

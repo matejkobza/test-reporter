@@ -18,7 +18,7 @@ angular.module('app')
 
 
         $scope.tabTesty = {
-            subjects: service.loadTests()
+            //subjects: service.loadTests()
         };
 
         $scope.toggleAddSubject = function (subjects) {

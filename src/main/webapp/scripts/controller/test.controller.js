@@ -15,7 +15,7 @@ angular.module('app')
         }
 
         function goToUpdate(testId) {
-            $state.go('tests.new', {id: testId});
+            $state.go('tests.update', {id: testId});
         }
 
         function runTest(testId) {

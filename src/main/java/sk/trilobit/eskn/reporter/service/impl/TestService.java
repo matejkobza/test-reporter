@@ -42,7 +42,8 @@ public class TestService implements ITestService {
         DataSource target = test.getTarget();
 
         Run run = new Run();
-        Thread thread = new Thread();
+        run.setTest(test);
+
 
 
         // create connection to source and target and then execute test in separate thread
@@ -77,6 +78,13 @@ public class TestService implements ITestService {
             Object resultTarget = rsTarget.getObject(1);
 
             result = cond(resultSource, resultTarget, test.getCond());
+
+            run.setSrc_result((String) resultSource);
+            run.setTrg_result((String) resultTarget);
+            run.setStatus(result.compareTo(Boolean.TRUE));
+            run.setEnd(new Timestamp(System.currentTimeMillis()));
+
+            runRepository.save(run);
 
             sourceConn.close();
             targetConn.close();

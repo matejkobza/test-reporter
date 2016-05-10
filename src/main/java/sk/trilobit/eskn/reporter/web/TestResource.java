@@ -11,6 +11,7 @@ import sk.trilobit.eskn.reporter.service.ITestService;
 import sk.trilobit.eskn.reporter.web.dto.TestDTO;
 
 import javax.inject.Inject;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -30,11 +31,19 @@ public class TestResource {
     private MapperFacade mapperFacade;
 
 	@RequestMapping(value = "/load", method = RequestMethod.GET)
-    public
     @ResponseBody
-    List<TestDTO> findTest() {
-        List<TestDTO> testDTOs = mapperFacade.mapAsList(testRepository.findAll(), TestDTO.class);
+    public List<TestDTO> findTest() {
+        List<Test> tests = testRepository.findAll();
+
+        tests.stream().map(e -> sortRuns(e));
+
+        List<TestDTO> testDTOs = mapperFacade.mapAsList(tests, TestDTO.class);
         return testDTOs;
+    }
+
+    private Test sortRuns(Test e) {
+        Collections.sort(e.getRuns(), (o1, o2) -> o1.getEnd().after(o2.getEnd())?1:-1);
+        return e;
     }
 
 	@Transactional
@@ -46,18 +55,27 @@ public class TestResource {
         test.setSource(dataSourceRepository.findOne(testDTO.getSourceDataSourceId()));
         test.setTarget(dataSourceRepository.findOne(testDTO.getTargetDataSourceId()));
 
-        this.testRepository.save(test);
+        testRepository.save(test);
         return findTest();
     }
 
-    @Transactional
     @RequestMapping(value = "/run", method = RequestMethod.POST)
     @ResponseBody
     public Boolean runTest(@RequestBody Long testId) {
+        return testService.runTest(testId);
+    }
 
-        testService.runTest(testId);
-
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Boolean deleteTest(@PathVariable("id") Long testId) {
+        testRepository.delete(testId);
         return true;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Test findTest(@PathVariable("id") Long testId) {
+        return testRepository.findOne(testId);
     }
 
 }

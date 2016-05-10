@@ -17,7 +17,17 @@ angular.module('app')
             })
             .state('tests.new', {
                 parent: 'tests',
-                url: 'new/:id',
+                url: 'new',
+                views: {
+                    'content@': {
+                        templateUrl: 'html/tests.new.html',
+                        controller: 'NewTestController as newTestController'
+                    }
+                }
+            })
+            .state('tests.update', {
+                parent: 'tests',
+                url: 'update/:id',
                 views: {
                     'content@': {
                         templateUrl: 'html/tests.new.html',
@@ -58,7 +68,7 @@ angular.module('app')
                 views: {
                     'content@': {
                         templateUrl: 'html/settings.new.html',
-                        controller: 'UpdateSettingController as updateSettingController'
+                        controller: 'NewSettingController as newSettingController'
                     }
                 }
             });

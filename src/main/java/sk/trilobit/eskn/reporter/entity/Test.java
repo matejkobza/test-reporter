@@ -1,10 +1,16 @@
 package sk.trilobit.eskn.reporter.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by doloi72 on 18.12.2015.
  */
+@Getter
+@Setter
 @Entity
 @Table(name = "TESTY_DEF")
 public class Test extends EntityWithId {
@@ -39,84 +45,7 @@ public class Test extends EntityWithId {
     @ManyToOne
     private DataSource target;
 
+    @OneToMany
+    private List<Run> runs;
 
-    public DataSource getSource() {
-        return source;
-    }
-
-    public void setSource(DataSource source) {
-        this.source = source;
-    }
-
-    public DataSource getTarget() {
-        return target;
-    }
-
-    public void setTarget(DataSource target) {
-        this.target = target;
-    }
-
-    public int getAkt() {
-        return akt;
-    }
-
-    public void setAkt(int akt) {
-        this.akt = akt;
-    }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSourceSql() {
-        return sourceSql;
-    }
-
-    public void setSourceSql(String sourceSql) {
-        this.sourceSql = sourceSql;
-    }
-
-    public String getTargetSql() {
-        return targetSql;
-    }
-
-    public void setTargetSql(String targetSql) {
-        this.targetSql = targetSql;
-    }
-
-    public String getCond() {
-        return cond;
-    }
-
-    public void setCond(String cond) {
-        this.cond = cond;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

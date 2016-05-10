@@ -3,9 +3,7 @@ package sk.trilobit.eskn.reporter.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -17,8 +15,9 @@ import java.sql.Timestamp;
 @Table(name = "TESTY_RUNS")
 public class Run extends EntityWithId {
 
-    @Column(name = "TEST_ID")
-    private int test_id;
+    @ManyToOne
+    @JoinColumn(name = "TEST_ID")
+    private Test test;
 
     @Column(name = "STATUS")
     private int status;
