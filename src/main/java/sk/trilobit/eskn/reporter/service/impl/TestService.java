@@ -1,6 +1,7 @@
 package sk.trilobit.eskn.reporter.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.jexl3.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sk.trilobit.eskn.reporter.entity.DataSource;
@@ -118,6 +119,18 @@ public class TestService implements ITestService {
         // here compares the result with library provided in chat
         String expression = source + " " + compareSign + " " + target;
 
+        // Create or retrieve an engine
+        JexlEngine jexl = new JexlBuilder().create();
+
+        // Create an expression
+        JexlExpression e = jexl.createExpression( expression );
+
+        // Create a context and add data
+        JexlContext jc = new MapContext();
+        jc.set("foo", new Object() );
+
+        // Now evaluate the expression, getting the result
+        Object o = e.evaluate(jc);
         // use it here and return result overloaded with Boolean
 
         return expression.isEmpty();
