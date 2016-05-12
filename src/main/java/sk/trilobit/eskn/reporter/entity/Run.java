@@ -1,9 +1,14 @@
 package sk.trilobit.eskn.reporter.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 
 /**
@@ -15,8 +20,9 @@ import java.sql.Timestamp;
 @Table(name = "TESTY_RUNS")
 public class Run extends EntityWithId {
 
-    @ManyToOne
-    @JoinColumn(name = "TEST_ID")
+    @ManyToOne(targetEntity = Test.class)
+    @JoinColumn(name = "TEST_ID", referencedColumnName = "ID")
+    @JsonIgnore
     private Test test;
 
     @Column(name = "STATUS")

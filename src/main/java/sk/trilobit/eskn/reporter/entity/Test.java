@@ -3,7 +3,12 @@ package sk.trilobit.eskn.reporter.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 /**
@@ -13,6 +18,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "TESTY_DEF")
+@NamedQuery(name = "Test.findAll", query = "SELECT DISTINCT(t) FROM Test t LEFT JOIN FETCH t.runs")
 public class Test extends EntityWithId {
 
     @Column(name = "AKT")
@@ -45,7 +51,7 @@ public class Test extends EntityWithId {
     @ManyToOne
     private DataSource target;
 
-    @OneToMany
+    @OneToMany(mappedBy = "test")
     private List<Run> runs;
 
 }

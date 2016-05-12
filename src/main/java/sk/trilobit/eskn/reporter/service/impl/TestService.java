@@ -13,10 +13,14 @@ import sk.trilobit.eskn.reporter.entity.Test;
 import sk.trilobit.eskn.reporter.repository.RunRepository;
 import sk.trilobit.eskn.reporter.repository.TestRepository;
 import sk.trilobit.eskn.reporter.service.ITestService;
-import sun.jvm.hotspot.types.WrongTypeException;
 
 import javax.inject.Inject;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 
 /**
  * Created with IntelliJ IDEA.
@@ -81,16 +85,17 @@ public class TestService implements ITestService {
 
             run.setSrc_result((String) resultSource);
             run.setTrg_result((String) resultTarget);
-            run.setStatus(result.compareTo(Boolean.TRUE));
-            run.setEnd(new Timestamp(System.currentTimeMillis()));
-
-            runRepository.save(run);
 
             sourceConn.close();
             targetConn.close();
         } catch (SQLException ex) {
             log.error("Unable to perform test run", ex);
+            result = false;
         } finally {
+            run.setStatus(result.compareTo(Boolean.TRUE));
+            run.setEnd(new Timestamp(System.currentTimeMillis()));
+
+            runRepository.save(run);
             return result;
         }
     }
@@ -122,7 +127,7 @@ public class TestService implements ITestService {
         return connectionString.toString();
     }
 
-    private Boolean cond(Object source, Object target, String compareSign) {
+    private Boolean cond(Object source, Object target, String compareSign) throws Exception {
         // here compares the result with library provided in chat
         String expression = source + " " + compareSign + " " + target;
 
@@ -140,7 +145,7 @@ public class TestService implements ITestService {
         if (o instanceof Boolean) {
             return expression.isEmpty();
         } else {
-            throw new WrongTypeException(o.toString());
+            throw new Exception(o.toString());
         }
     }
 

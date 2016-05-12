@@ -1,7 +1,10 @@
 package sk.trilobit.eskn.reporter.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import sk.trilobit.eskn.reporter.entity.Test;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,4 +14,7 @@ import sk.trilobit.eskn.reporter.entity.Test;
  */
 public interface TestRepository extends JpaRepository<Test, Long> {
 
+    @Override
+    @Query
+    List<Test> findAll();
 }
